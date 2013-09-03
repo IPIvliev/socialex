@@ -1,0 +1,193 @@
+$green: #72C02C;
+
+/*Top Bar (login, search etc.)
+------------------------------------*/
+.top {
+	padding:7px 0 8px;
+}
+
+.loginbar {
+	margin:0;
+	padding:0;
+	z-index:9999;
+	list-style:none;
+	position:relative;
+}
+
+.loginbar li {
+	display:inline;
+	list-style:none;
+	padding-bottom:15px;
+}
+
+.loginbar li a, 
+.loginbar li a:hover {
+	color:#7c8082;
+	font-size:11px;
+	text-transform:uppercase;
+	font-family:'Open Sans', sans-serif;
+}
+
+.loginbar li.devider { 
+	top:-1px;
+	padding:0;
+	font-size:8px;
+	position:relative;
+	margin:0 6px 0 2px;
+	font-family:Tahoma;
+	border-right:solid 1px #bbb;
+}
+
+.loginbar i {
+	color:#999;
+	font-size:18px;
+	margin-top:3px;
+	cursor:pointer;
+}
+
+/*Lenguages*/
+.loginbar li ul { 
+	top:30px; 
+	margin:0;
+	left:-6px;
+	display:none; 
+	padding-top:4px;
+	position:absolute; 
+	border-radius:3px;
+	padding-bottom:4px;
+	background:#f0f0f0;
+}
+
+.loginbar li:hover ul { 
+	display:block; 
+}
+
+.loginbar li ul li { 
+	padding-bottom:0;
+	display:list-item;
+	position:relative;
+	margin-bottom:1px;
+}
+
+.loginbar li ul li a { 
+	color:#555;
+	display:block;
+	min-width:85px; 
+	font-size:10px;
+	padding:2px 12px;
+	background:#f0f0f0;
+	text-decoration:none;
+}
+
+.loginbar li ul li a:hover, 
+.loginbar li ul li.active a {
+	opacity:1;
+	color:#555;
+	font-size:10px;
+	text-shadow:none;
+	background:#fafafa;
+
+}
+
+.loginbar li ul li.active i {
+	top:2px; 
+	right:-5px;
+	font-size:14px;
+	cursor:default;
+	position:absolute;
+	text-shadow:0 1px 0 #e9e9e9;
+}
+
+.loginbar i.icon-globe {
+	color:#bbb;
+	font-size:13px;
+	margin:3px 3px 0 0;
+}
+
+.loginbar li i.icon-sort-up {
+	top:21px; 
+	left:-1px;
+	color:#eee;
+	display:none;
+	font-size:14px;
+	cursor:default;
+	position:absolute;
+}
+
+.loginbar li:hover i.icon-sort-up {
+	display:block;
+}
+
+.loginbar li:hover i.icon-ok {
+	top:-2px;
+	color:#aaa;
+}
+
+/*Header (logo and menu)
+------------------------------------*/
+header {
+	z-index:999;
+	position:relative;
+
+	.big {
+		font-weight: bold;
+		font-size: 1.2em;
+	}
+
+	.green {
+		color: $green;
+	}
+.color {
+	background-color: #999;
+}
+
+.header .container {
+	position:relative;
+}
+
+.logo {
+	position:relative;
+	left:0;
+}
+
+.right {
+	right: 0;
+}
+
+
+/*Menu*/
+
+
+	.nav {
+		float: right;
+		margin-top: 10px;
+		font-family:'Open Sans', sans-serif;
+		font-weight: bold;
+		li {
+
+			margin-right: 1px;
+			font-size: 18px;
+			text-transform: uppercase;
+
+			a {
+				color: #777;
+				-webkit-transition: all 0.4s ease-in-out;
+				&:hover {
+					color: #72C02C;
+				}
+			}
+		}
+
+		.active > a, .active > a:hover, .active > a:focus {
+			color: white;
+			background-color: #72C02C;
+		}
+
+	}
+
+
+}
+
+
+
+

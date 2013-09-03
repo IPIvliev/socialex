@@ -1,0 +1,28 @@
+.copyright {
+font-size: 12px;
+padding: 5px 10px;
+background: #3E4753;
+border-top: solid 1px #777;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 13px;
+line-height: 1.6;
+
+p {
+color: #DADADA;
+margin: 10px 0 10px;
+}
+a {
+	margin: 0 5px;
+	color: #72C02C;
+		&:hover {
+			color: #72C02C !important;
+		}
+}
+img {
+	height: auto;
+max-width: 100%;
+vertical-align: middle;
+border: 0;
+margin-top: 5px;
+}
+}
