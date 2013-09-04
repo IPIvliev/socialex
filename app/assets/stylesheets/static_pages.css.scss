@@ -61,4 +61,47 @@ margin-top: 30px;
 
 	.color {
 		background-color: #ccc;
+		border-radius: 10px;
+		height: 200px;
 	}
+
+.users {
+	background-color: #ccc;
+	width: 100px;
+	display: inline-block;
+
+	margin: 0 20px 25px 0;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	height: 175px;
+	top: 0;
+	float: left;
+
+	.profile_image {
+		border: solid 3px #EEE;
+		border-color: #72C02C !important;
+	}
+
+	.profile_name {
+		text-align: center;
+		font-weight: bold;
+		
+		.price {
+			font-size: 0.7em;
+			.green {
+				color: #72C02C;
+			}
+			.red {
+				color: #960018;
+			}
+		}
+	}
+}
+.btn-small {
+	margin-left: 20px;
+}
+
+.right {
+	text-align: right;
+	padding-right: 20px;
+}

@@ -5,12 +5,81 @@
 
 			<div class="span12 color">
 			</div>
+			
+			<div class="span12 top-30 right">
+				<button class="btn btn-success btn-small">Все пользователи</button><button class="btn btn-success btn-small">Акции в наличии</button>
+			</div>
+
 			<div class="span12 top-30">
-				<p>
-					<%= image_tag 'https://graph.facebook.com/'+@profile['id']+'/picture?type=normal&width=100&height=100' %></p>
-				<p>
-					<%= image_tag 'https://graph.facebook.com/'+@test1['id']+'/picture?type=normal&width=100&height=100' %></p>
+				<div class='users'>
+					<div class='profile_image'>
+						<%= image_tag 'https://graph.facebook.com/'+@profile['id']+'/picture?type=normal&width=100&height=100' %>
+					</div>
+					<div class='profile_name'>
+						<div class="price">
+							<span class="amount">осталось 12 акций</span><br>
+							100 руб. (<span class="green">+</span>)
+						</div>
+						<%= @profile['name'] %>
+					</div>
+				</div>
+
+				<div class='users'>
+					<div class='profile_image'>
+						<%= image_tag 'https://graph.facebook.com/'+@test1['id']+'/picture?type=normal&width=100&height=100' %>
+					</div>
+					<div class='profile_name'>
+						<div class="price">
+							<span class="amount">осталось 100 акций</span><br>
+							87 руб. (<span class="red">-</span>)
+						</div>
+						<%= @test1['name'] %>
+					</div>
+				</div>
 				
+				<div class='users'>
+					<div class='profile_image'>
+						<%= image_tag 'https://graph.facebook.com/'+@test6['id']+'/picture?type=normal&width=100&height=100' %>
+					</div>
+					<div class='profile_name'>
+						<%= @test6['name'] %>
+					</div>
+				</div>
+
+				<div class='users'>
+					<div class='profile_image'>
+						<%= image_tag 'https://graph.facebook.com/'+@test3['id']+'/picture?type=normal&width=100&height=100' %>
+					</div>
+					<div class='profile_name'>
+						<%= @test3['name'] %>
+					</div>
+				</div>
+
+				<div class='users'>
+					<div class='profile_image'>
+						<%= image_tag 'https://graph.facebook.com/'+@test4['id']+'/picture?type=normal&width=100&height=100' %>
+					</div>
+					<div class='profile_name'>
+						<%= @test4['name'] %>
+					</div>
+				</div>
+				<div class='users'>
+					<div class='profile_image'>
+						<%= image_tag 'https://graph.facebook.com/'+@test5['id']+'/picture?type=normal&width=100&height=100' %>
+					</div>
+					<div class='profile_name'>
+						<%= @test5['name'] %>
+					</div>
+				</div>
+
+				<div class='users'>
+					<div class='profile_image'>
+						<%= image_tag 'https://graph.facebook.com/'+@test2['id']+'/picture?type=normal&width=100&height=100' %>
+					</div>
+					<div class='profile_name'>
+						<%= @test2['name'] %>
+					</div>
+				</div>
 			</div>
 
 
