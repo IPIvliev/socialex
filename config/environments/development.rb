@@ -34,4 +34,6 @@ Socialex::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  ENV['SSL_CERT_FILE'] = 'D:/cacert.pem'
 end
