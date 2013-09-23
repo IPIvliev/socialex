@@ -1,0 +1,17 @@
+<li>
+  <%= gravatar_for user, size: 52 %>
+  <%= link_to user.name, user %>
+  <% if current_user.admin? && !current_user?(user) %>
+    | <%= link_to "delete", user, method: :delete,
+                                  data: { confirm: "Вы уверены?" } %>
+  <% end %>
+  <% if current_user.admin? && !current_user?(user) %>
+ 	<% if user.manager == true %>
+	|	<%= link_to "Разжаловать из менеджеров", man_user_path(user), method: :put %>
+	<% else %>
+	|	<%= link_to "Назвачить менеджером", man_user_path(user), method: :put %>
+	<% end %>  
+  <% end %>
+
+
+</li>

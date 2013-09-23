@@ -13,7 +13,7 @@
 			<div class="span12 top-30">
 				<div class='users'>
 					<div class='profile_image'>
-						<%= image_tag 'https://graph.facebook.com/'+@profile['id']+'/picture?type=normal&width=100&height=100' %>
+						<%= link_to image_tag 'https://graph.facebook.com/'+@profile['id']+'/picture?type=normal&width=100&height=100', user_path(user) %>
 					</div>
 					<div class='profile_name'>
 						<div class="price">
