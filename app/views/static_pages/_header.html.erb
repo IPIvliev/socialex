@@ -34,7 +34,11 @@
 				er
 			</div>
 			<div class="span2">
-				<button class="btn btn-success btn-large pull-center">Аккаунт #</button>
+				<% if current_user %>
+					<%= link_to "# Выход", signout_path, id: "sign_out", :class => "btn btn-success btn-large pull-center" %>
+				<% else %>
+					<%= link_to "# Аккаунт", "/auth/facebook", id: "sign_in", :class => "btn btn-success btn-large pull-center" %>
+				<% end %>
 			</div>
 			<div class="span2">
 				<span class="big green">10 245 </span><br> участников

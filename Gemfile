@@ -8,6 +8,8 @@ gem 'bootstrap-will_paginate', '0.0.6'
 
 gem 'twitter'
 gem "koala", "~> 1.7.0rc1"
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
