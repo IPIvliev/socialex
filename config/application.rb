@@ -58,5 +58,9 @@ module Socialex
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Gem Russian
+    config.i18n.default_locale = :ru
+  
   end
 end

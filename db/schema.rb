@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131003131334) do
+ActiveRecord::Schema.define(:version => 20131007091745) do
+
+  create_table "stocks", :force => true do |t|
+    t.integer  "buyer_id"
+    t.integer  "seller_id",  :default => 0
+    t.integer  "host_id"
+    t.integer  "amount",     :default => 100
+    t.integer  "price",      :default => 100
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "provider"

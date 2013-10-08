@@ -4,18 +4,20 @@ class UsersController < ApplicationController
 
   def index
     @users = User.paginate(page: params[:page])
+    
   end
 
   def show
     @user = User.find(params[:id])
-
+    @buyers = User.find(params[:id])
+    @users = User.all
   end
 
   def new
     @user = User.new
   end
 
-    def create
+  def create
     @user = User.new(params[:user])
     if @user.save
     	sign_in @user

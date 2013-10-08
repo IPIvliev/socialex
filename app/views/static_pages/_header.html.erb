@@ -25,7 +25,7 @@
 		<div class="row-fluid">
 			<div class="span4">
 				<div class="logo">                                             
-					<a href="/index.html">
+					<a href="/">
 						Social Exchange
 					</a>
 				</div>   
@@ -41,7 +41,7 @@
 				<% end %>
 			</div>
 			<div class="span2">
-				<span class="big green">10 245 </span><br> участников
+				<span class="big green"> <%= @users.count %> </span><br> <%= Russian.pluralize(@users.count, "участник", "участника", "участников") %>
 			</div>
 		</div>
 	</div>

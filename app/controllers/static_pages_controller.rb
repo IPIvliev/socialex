@@ -3,7 +3,8 @@
 class StaticPagesController < ApplicationController
   def index
 
-@users = User.paginate(page: params[:page])
+  @users = User.paginate(page: params[:page])
+  
 
 / @client = Twitter::Client.new(
   :consumer_key => "8SmX3dJKoSbQq8hCOMkNAg",
@@ -25,7 +26,4 @@ class StaticPagesController < ApplicationController
 /
   end
 
-   def show
-    @user = User.find(params[:id])
-   end
 end

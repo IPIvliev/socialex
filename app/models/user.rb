@@ -1,7 +1,12 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :oauth_expires_at, :oauth_token, :provider, :uid
 
-  
+  has_many :selled, :foreign_key => 'seller_id', :class_name => "Stock"
+  has_many :bought, :foreign_key => 'buyer_id', :class_name => "Stock"
+  has_many :hosted, :foreign_key => 'host_id', :class_name => "Stock"
+
+
+
 
 def self.from_omniauth(auth)
   where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|

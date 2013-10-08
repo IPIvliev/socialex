@@ -1,1 +1,47 @@
-<%= @user.name %>, <%= @user.email %>
+<div class="container top-30">
+	<div class="row-fluid">
+		<div class="span8">
+
+<% @per = Stock.where("host_id = ? AND buyer_id = ?", @user.id, @user.id).last %>
+
+			<div class="span12">
+				<div class="span4">
+					<%= image_tag 'https://graph.facebook.com/'+@user.uid+'/picture?type=normal&width=100&height=100' %>
+				</div>
+				<div class="span4">
+					<strong> <%= @user.name %> </strong>
+					<p><strong>Акции в наличии:</strong> <%= @per.amount %> шт.</p>
+					<p><strong>Стоимость акции:</strong> <%= @per.price %> руб.</p>
+					<p><strong>Динамика цены:</strong> +53%</p>
+				</div>
+				<div class="span4">
+	
+					<p>У вас <strong>12 акций</strong> этого пользователя.</p>
+				</div>
+			</div>
+			
+			<div class="span12 top-30 color">
+				<h4>Заявки на продажу акций пользователя <%= @user.name %> </h4>
+				<% render "sells" %>
+				<%= link_to "Купить", "#", :class => "btn btn-success btn-large pull-center" %>
+			</div>
+
+			<div class="span12 top-30 color">
+				<h4>Заявки на покупку акций пользователя <%= @user.name %></h4>
+				<% render "buys" %>
+				<%= link_to "Продать", "#", :class => "btn btn-danger btn-large pull-center" %>
+			</div>
+
+			<div class="span12 top-30">
+				<strong>Держатели акций:</strong>
+				<%= link_to @buyers.name, @buyers %>
+
+			</div>
+
+
+		</div>
+
+		<%= render 'shared/column' %>
+
+	</div>
+</div>
