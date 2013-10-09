@@ -15,26 +15,117 @@
 					<p><strong>Динамика цены:</strong> +53%</p>
 				</div>
 				<div class="span4">
-	
+				<%= image_tag ("facebook.png") %><%= image_tag ("twitter.png") %>
 					<p>У вас <strong>12 акций</strong> этого пользователя.</p>
 				</div>
 			</div>
 			
 			<div class="span12 top-30 color">
 				<h4>Заявки на продажу акций пользователя <%= @user.name %> </h4>
-				<% render "sells" %>
-				<%= link_to "Купить", "#", :class => "btn btn-success btn-large pull-center" %>
+
+
+			  <div class="requests">
+
+			    <div class="request">
+			    	<div class="row-fluid">
+			      <div class="span2">
+			        №
+			      </div>
+
+			      <div class="span4">
+			        Продавец
+			      </div>
+
+			      <div class="span2">
+			        Количество
+			      </div>
+
+			      <div class="span2">
+			        Цена за 1 шт.
+			      </div>
+
+			      <div class="span2">
+			        Купить
+			      </div>
+
+			  		</div>
+<% Stock.where("host_id = ? AND (status = ? OR status = ?)", @user.id, 0, 1).each do |deal| %>	
+					<div class="row-fluid">
+			      <div class="span2">
+			        1
+			      </div>
+
+			      <div class="span4">
+			        <%= @user.name %>
+			      </div>
+
+			      <div class="span2">
+			        <%= deal.amount %> шт.
+			      </div>
+
+			      <div class="span2">
+			        <%= deal.price %> руб.
+			      </div>
+
+			      <div class="span2">
+
+<%= form_for @stock, :url => {:controller => 'static_pages', :action => 'create'} do |f| %>
+<%= f.number_field :amount, :class => "amount-deal" %>
+<%= f.submit "купить", :class => "btn btn-success btn-mini" %>
+
+<% end %>
+
+			      </div>
+
+			      	</div>
+<% end %>
+
+
+
+		<% render "sells" %>
+
+			    </div>
+
+
+			  </div>
+
 			</div>
 
 			<div class="span12 top-30 color">
 				<h4>Заявки на покупку акций пользователя <%= @user.name %></h4>
-				<% render "buys" %>
+			  <div class="requests">
+
+			    <div class="request">
+			    
+			      <div class="span2">
+			        №
+			      </div>
+
+			      <div class="span6">
+			        Покупатель
+			      </div>
+
+			      <div class="span2">
+			        Количество
+			      </div>
+
+			      <div class="span2">
+			        Цена за 1 шт.
+			      </div>
+
+			<% render "buys" %>
+
+			    </div>
+
+
+			  </div>
+
 				<%= link_to "Продать", "#", :class => "btn btn-danger btn-large pull-center" %>
 			</div>
 
 			<div class="span12 top-30">
 				<strong>Держатели акций:</strong>
-				<%= link_to @buyers.name, @buyers %>
+				<%= link_to @buyers.name, @buyers %> (12 шт.)
 
 			</div>
 

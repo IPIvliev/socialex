@@ -6,6 +6,8 @@ class CreateStocks < ActiveRecord::Migration
       t.integer :host_id
       t.integer :amount, :default => 100
       t.integer :price, :default => 100
+      t.integer :status, :default => 0
+
 
       t.timestamps
     end

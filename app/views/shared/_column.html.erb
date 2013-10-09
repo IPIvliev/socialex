@@ -3,9 +3,11 @@
 			<p>Отправьте своё сообщение. Наш менеджер свяжется с вами в самое ближайшее время.</p>
 
 			<div class="headline"><h3>Купить акции</h3></div>
-			<input></input>
-			<button>OK</button>
-			<br>
+
+			<%= form_for User.new, :url => "search" do |f| %>
+			<%= f.text_field :name, :class => "search-user" %>
+			<%= f.submit "OK", :class => "btn btn-success" %>
+			<% end %>
 
 			<div class="headline"><h3>Проверка</h3></div>
 			<p>Отправьте своё сообщение.</p>

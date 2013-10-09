@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20131007091745) do
     t.integer  "host_id"
     t.integer  "amount",     :default => 100
     t.integer  "price",      :default => 100
+    t.integer  "status",     :default => 0
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
   end

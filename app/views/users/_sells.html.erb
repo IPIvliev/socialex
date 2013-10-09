@@ -1,17 +1,17 @@
-        <div class='users'>
+<% # Stock.where("host_id = ? AND buyer_id = ?", @user.id, @user.id) %>
 
-<% Stock.where("host_id = ? AND buyer_id = ?", user.id, user.id) %>
+      <div>
+        №
+      </div>
 
-          <div class='profile_image'>
-            <%= link_to (image_tag 'https://graph.facebook.com/'+user.uid+'/picture?type=normal&width=100&height=100'), user %>
-          </div>
-          <div class='profile_name'>
-            <div class="price">
-              <span class="amount">осталось <%= @per.amount %> <%= Russian.pluralize(@per.amount, "акция", "акции", "акций") %></span><br>
-              
-              
-              <%= @per.price %> руб. (<span class="green">+</span>)
-            </div>
-            <%= user.name %> 
-          </div>
-        </div>
+      <div>
+        Продавец
+      </div>
+
+      <div>
+        Количество
+      </div>
+
+      <div>
+        Цена за 1 шт.
+      </div>

@@ -11,6 +11,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @buyers = User.find(params[:id])
     @users = User.all
+
+    @stock = Stock.new
   end
 
   def new
