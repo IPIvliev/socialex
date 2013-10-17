@@ -69,11 +69,16 @@
 
 			      <div class="span2">
 
-<%= form_for @stock, :url => {:controller => 'static_pages', :action => 'create'} do |f| %>
+<%= form_for @stock do |f| %>
 <%= f.number_field :amount, :class => "amount-deal" %>
+<% #f.hidden_field :buyer_id, :value => current_user.id %>
+<%= f.hidden_field :seller_id, :value => @user.id %>
+<%= f.hidden_field :host_id, :value => @user.id %>
 <%= f.submit "купить", :class => "btn btn-success btn-mini" %>
 
 <% end %>
+
+
 
 			      </div>
 
@@ -125,7 +130,7 @@
 
 			<div class="span12 top-30">
 				<strong>Держатели акций:</strong>
-				<%= link_to @buyers.name, @buyers %> (12 шт.)
+				
 
 			</div>
 
