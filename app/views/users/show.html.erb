@@ -10,8 +10,8 @@
 				</div>
 				<div class="span4">
 					<strong> <%= @user.name %> </strong>
-					<p><strong>Акции в наличии:</strong> <%= @per.amount %> шт.</p>
-					<p><strong>Стоимость акции:</strong> <%= @per.price %> руб.</p>
+					<p><strong>Акции в наличии:</strong> <%= 12 %> шт.</p>
+					<p><strong>Стоимость акции:</strong> <%= @stockprice %> руб.</p>
 					<p><strong>Динамика цены:</strong> +53%</p>
 				</div>
 				<div class="span4">
@@ -32,7 +32,7 @@
 			        №
 			      </div>
 
-			      <div class="span4">
+			      <div class="span3">
 			        Продавец
 			      </div>
 
@@ -44,18 +44,18 @@
 			        Цена за 1 шт.
 			      </div>
 
-			      <div class="span2">
+			      <div class="span3">
 			        Купить
 			      </div>
 
 			  		</div>
-<% Stock.where("host_id = ? AND (status = ? OR status = ?)", @user.id, 0, 1).each do |deal| %>	
+<% Stock.where("host_id = ? AND amount > ? AND (status = ? OR status = ?)", @user.id, 0, 0, 1).each do |deal| %>	
 					<div class="row-fluid">
 			      <div class="span2">
 			        1
 			      </div>
 
-			      <div class="span4">
+			      <div class="span3">
 			        <%= @user.name %>
 			      </div>
 
@@ -67,11 +67,11 @@
 			        <%= deal.price %> руб.
 			      </div>
 
-			      <div class="span2">
+			      <div class="span3">
 
 <%= form_for @stock do |f| %>
-<%= f.number_field :amount, :class => "amount-deal" %>
-<% #f.hidden_field :buyer_id, :value => current_user.id %>
+<%= f.number_field :amount, value: deal.amount, :class => "amount-deal" %>
+<% f.hidden_field :buyer_id, :value => current_user.id %>
 <%= f.hidden_field :seller_id, :value => @user.id %>
 <%= f.hidden_field :host_id, :value => @user.id %>
 <%= f.submit "купить", :class => "btn btn-success btn-mini" %>

@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
 
 def self.from_omniauth(auth)
+
   where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
     user.provider = auth.provider
     user.uid = auth.uid
@@ -16,8 +17,16 @@ def self.from_omniauth(auth)
     user.oauth_token = auth.credentials.token
     user.oauth_expires_at = Time.at(auth.credentials.expires_at)
     user.save!
+    new_stock(user) if !ifstock?(user)
   end
 end
 
+def self.new_stock(user)
+  Stock.create(:buyer_id => user.id, :host_id => user.id)
+end
+
+def self.ifstock?(user)
+  !Stock.where("host_id = ? AND buyer_id = ? AND seller_id = ?", user.id, user.id, 0).first.nil?
+end
 
 end
