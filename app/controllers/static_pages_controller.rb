@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
 
   @users = User.paginate(page: params[:page])
 
-
+#@hi = Stock.hi
   end
 
 end

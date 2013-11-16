@@ -4,8 +4,8 @@
 
 			<div class="headline"><h3>Купить акции</h3></div>
 
-			<%= form_for User.new, :url => "search" do |f| %>
-			<%= f.text_field :name, :class => "search-user" %>
+			<%= form_for User.new, :url => {:controller => 'users', :action => 'search'} do |f| %>
+			<%= f.text_field :name, :class => "search-user", :placeholder => "@Ivanov" %>
 			<%= f.submit "OK", :class => "btn btn-success" %>
 			<% end %>
 

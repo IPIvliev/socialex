@@ -16,9 +16,17 @@ class UsersController < ApplicationController
     @stockprice = Stock.stockprice(@user)
 
     @stock = Stock.new
+
+    @stocksbuy = Stock.where("host_id = ? AND amount > ? AND status = ?", @user.id, 0, 2).lastbuy
+    @stockssell = Stock.where("host_id = ? AND amount > ? AND status = ?", @user.id, 0, 1).lastbuy
+
+    @stockamount = Stock.where("host_id = ?", @user.id)
+
   end
 
-
+  def search
+  redirect_to user_path(3)
+  end
 
 
 end

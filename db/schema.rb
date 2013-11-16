@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(:version => 20131007091745) do
     t.integer  "seller_id",  :default => 0
     t.integer  "host_id"
     t.integer  "amount",     :default => 100
-    t.integer  "price",      :default => 100
+    t.float    "price",      :default => 100.0
     t.integer  "status",     :default => 0
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "users", :force => true do |t|

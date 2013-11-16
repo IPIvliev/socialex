@@ -2,7 +2,12 @@ Socialex::Application.routes.draw do
   get "static_pages/index"
 
   resources :users
-  resources :stocks
+  resources :stocks do
+  	post :deal, :on => :member
+  end
+
+match 'users/search', to: 'users#search'
+
   
 match 'auth/:provider/callback', to: 'sessions#create'
 match 'auth/failure', to: redirect('/')
