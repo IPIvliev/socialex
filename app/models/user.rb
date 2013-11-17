@@ -22,7 +22,7 @@ def self.from_omniauth(auth)
 end
 
 def self.new_stock(user)
-  Stock.create(:buyer_id => user.id, :host_id => user.id)
+  Stock.create(:buyer_id => user.id, :host_id => user.id, :status => 2)
 end
 
 def self.ifstock?(user)
