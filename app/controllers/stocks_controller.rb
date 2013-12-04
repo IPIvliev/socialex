@@ -14,12 +14,14 @@ class StocksController < ApplicationController
     end
   end
 
-def deal
-  a = Stock.find(params[:stock][:stockid])
-  result = a.amount - params[:stock][:amount].to_i
-  a.update_attributes(:amount => result)
-  Stock.create(:host_id => a.host_id, :buyer_id => params[:stock][:buyer_id], :seller_id => a.buyer_id, :amount => params[:stock][:amount])
-  redirect_to user_path(params[:stock][:buyer_id])
-end
+  def deal
+    a = Stock.find(params[:stock][:stockid])
+    result = a.amount - params[:stock][:amount].to_i
+    a.update_attributes(:amount => result)
+    Stock.create(:host_id => a.host_id, :buyer_id => params[:stock][:buyer_id], :seller_id => a.buyer_id, :amount => params[:stock][:amount])
+    redirect_to user_path(params[:stock][:buyer_id])
+  end
+
+
 
 end

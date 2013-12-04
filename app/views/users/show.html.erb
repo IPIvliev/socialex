@@ -81,7 +81,9 @@
 							</div>
 						<% end %>
 					
-					<p> У вас есть ? акций пользователя. Средняя цена покупки - <%= @stockprice %> руб. Разместить заявку на продажу.</p>
+					<p> У вас есть
+					 <%= @userstock.sum(:amount) %> 
+					 акций пользователя. Средняя цена покупки - <%= @stockprice %> руб. Разместить заявку на продажу.</p>
 
 					<%= form_for @stock, :url => {:controller => 'stocks', :action => 'create'} do |f| %>
 						<div class="row-fluid">
