@@ -22,16 +22,12 @@ class UsersController < ApplicationController
 
     @stockamount = Stock.where("host_id = ?", @user.id)
 
-    @userstock = User.howmany
   end
 
   def self.search
     redirect_to user_path(3)
   end
 
-  def self.howmany
-    s = Stock.where('host_id = ?, buyer_id = ?', @user.id, 3)
-    s.sum(:amount)
-  end
+
 
   end

@@ -1,0 +1,84 @@
+<div class="row-fluid">
+			<div class="span6 top-30 color">
+				<h4>Ордера на продажу</h4>
+				<p>Всего <%= @stocksbuy.count %> <%= Russian.pluralize(@stocksbuy.count, "предложение", "предложения", "предложений") %>. Отображены 3 предложения с наименьшей ценой </p>
+
+				<div class="requests">
+
+					<div class="request">
+						<div class="row-fluid">
+							<div class="span4">
+								Цена
+							</div>
+
+							<div class="span4">
+								Количество
+							</div>
+
+							<div class="span4">
+								Стоимость
+							</div>
+
+						</div>
+
+						<% @stocksbuy.limit(3).each do |deal| %>	
+							<div class="row-fluid">
+								<div class="span2">
+								1
+								</div>
+
+								<div class="span3">
+								<%= @user.name %>
+								</div>
+
+								<div class="span2">
+								<%= deal.amount %> шт.
+								</div>
+
+							</div>
+						<% end %>
+					
+					</div>
+				</div>
+			</div>
+
+			<div class="span6 top-30 color">
+				<h4>Ордера на покупку</h4>
+				<div class="requests">
+
+					<div class="request">
+
+						<div class="span2">
+							Цена
+						</div>
+
+						<div class="span6">
+							Количество
+						</div>
+
+						<div class="span2">
+							Стоимость
+						</div>
+
+					</div>
+				</div>
+
+					<%= form_for @stock, :url => {:controller => 'stocks', :action => 'create'} do |f| %>
+						<div class="row-fluid">
+							<div class="span4">
+								1
+							</div>
+
+							<div class="span4">
+								<%= @user.name %>
+							</div>
+
+							<div class="span4">
+								<%= f.number_field :amount, :class => "amount-deal" %> шт.
+							</div>
+
+						</div>
+					<% end %>
+
+			</div>
+</div>

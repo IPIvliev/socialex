@@ -29,4 +29,9 @@ def self.ifstock?(user)
   !Stock.where("host_id = ? AND buyer_id = ? AND seller_id = ?", user.id, user.id, 0).first.nil?
 end
 
+  def self.howmany
+    s = Stock.where('host_id = ?, buyer_id = ?', @user.id, 3)
+    s.sum(:amount)
+  end
+
 end
