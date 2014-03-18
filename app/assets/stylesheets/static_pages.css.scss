@@ -2,8 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import "bootstrap";
-
 /* Main */
 /*body */
 body {
@@ -26,6 +24,10 @@ body {
 			border-bottom: 2px solid #72C02C;
 
 		}
+	}
+
+	.dashboard-panel-6 {
+	   width: 49%;
 	}
 
 	p, a, li {
@@ -60,10 +62,9 @@ margin-top: 30px;
 }
 
 	.color {
-		width: 100%;
 		background-color: #ccc;
 		border-radius: 10px;
-		height: 300px;
+		height: 350px;
 	}
 
 .users {

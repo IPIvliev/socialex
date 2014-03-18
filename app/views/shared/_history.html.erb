@@ -1,49 +1,50 @@
-			<div class="span12 top-30 color">
+<div class="row">
+			<div class="col-md-12 top-30 color">
 				<h4>История сделок</h4>
 				<div class="requests">
 
 					<div class="request">
 
-						<div class="span2">
+						<div class="col-md-2">
 							Дата
 						</div>
 
-						<div class="span2">
+						<div class="col-md-2">
 							Тип
 						</div>
 
-						<div class="span2">
+						<div class="col-md-2">
 							Цена за 1 шт.
 						</div>
 
-						<div class="span2">
+						<div class="col-md-2">
 							Количество
 						</div>
 
-						<div class="span4">
+						<div class="col-md-4">
 							Стоимость
 						</div>
 
 
 <% @stockssell.limit(3).each do |deal| %>	
-							<div class="row-fluid">
-								<div class="span2">
+							<div class="row">
+								<div class="col-md-2">
 								<%= deal.created_at %>
 								</div>
 
-								<div class="span2">
+								<div class="col-md-2">
 								<%= deal.type %>
 								</div>
 
-								<div class="span2">
+								<div class="col-md-2">
 								<%= deal.price %> шт.
 								</div>
 
-								<div class="span2">
+								<div class="col-md-2">
 								<%= deal.amount %> руб.
 								</div>
 
-								<div class="span3">
+								<div class="col-md-2">
 									<%= deal.price %>
 								</div>
 
@@ -54,3 +55,4 @@
 					</div>
 				</div>
 			</div>
+		</div>

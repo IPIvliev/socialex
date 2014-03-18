@@ -6,8 +6,6 @@ gem 'bootstrap-sass'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 
-gem 'twitter'
-gem "koala", "~> 1.7.0rc1"
 gem 'omniauth'
 gem 'omniauth-facebook'
 

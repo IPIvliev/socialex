@@ -1,28 +1,31 @@
 <div class="container top-30">
-	<div class="row-fluid">
-		<div class="span8">
-
-			<div class="span12">
-				<div class="span4">
-					<%= image_tag 'https://graph.facebook.com/'+@user.uid+'/picture?type=normal&width=100&height=100' %>
+	<div class="row">
+		<div class="col-md-8">
+			<div class="col-md-12">
+				<div class="col-md-4">
+					<%= image_tag 'https://graph.facebook.com/'+@user.uid+'/picture?type=normal&width=120&height=120', :class => "img-circle" %>
 				</div>
-				<div class="span4">
+				<div class="col-md-4">
 					<strong> <%= @user.name %> </strong>
 					<p><strong>Акции в наличии:</strong> <%= @stockamount.sum(:amount) %> шт.</p>
 					<p><strong>Стоимость акции:</strong> <%= @stockprice %> руб.</p>
 					<p><strong>Динамика цены:</strong> +53%</p>
 				</div>
-				<div class="span4">
+				<div class="col-md-4">
 					<%= image_tag ("facebook.png") %><%= image_tag ("twitter.png") %>
 					<p>У вас <strong>12 акций</strong> этого пользователя.</p>
 				</div>
 			</div>
-<%= render "/shared/buysell" %>
-<%= render "/shared/orders" %>
-<%= render "/shared/history" %>
+			
+			<%= render "/shared/buysell" %>
+			
+			<%= render "/shared/orders" %>
+			
+			<%= render "/shared/history" %>
 
-			<div class="span12 top-30">
+			<div class="col-md-12 top-30">
 				<strong>Держатели акций:</strong>
+				<p><i class="glyphicon glyphicon-user"></i> Иванов, <i class="glyphicon glyphicon-user"></i> Петров, <i class="glyphicon glyphicon-user"></i> Сидоров</p>
 			</div>
 		</div>
 

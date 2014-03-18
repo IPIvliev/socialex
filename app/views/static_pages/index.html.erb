@@ -1,24 +1,19 @@
 <div class="container top-30">
-	<div class="row-fluid">
-		<div class="span8">
-
-			<div class="span12 color">
+	<div class="row">
+		<div class="col-md-8">
+			<div class=".col-md-12 color">
+			
 			</div>
 			
-			<div class="span12 top-30 right">
-				<button class="btn btn-success btn-small">Все пользователи</button><button class="btn btn-success btn-small">Акции в наличии</button>
-			</div>
-<%= hi %>
-
-			<div class="span12 top-30">
-
-<%= render @users %>
-
+			<div class=".col-md-12 top-30 right">
+				<button class="btn btn-success btn-small">Все пользователи</button>
+				<button class="btn btn-success btn-small">Акции в наличии</button>
 			</div>
 
+			<div class=".col-md-12 top-30">
+				<%= render @users %>
+			</div>
 		</div>
-
 		<%= render 'shared/column' %>
-
 	</div>
 </div>

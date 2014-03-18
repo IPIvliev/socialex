@@ -28,6 +28,10 @@ class UsersController < ApplicationController
     redirect_to user_path(3)
   end
 
+  def stocks
+
+  end
+
 
 
   end
