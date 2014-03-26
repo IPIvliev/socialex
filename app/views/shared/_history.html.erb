@@ -26,30 +26,30 @@
 						</div>
 
 
-<% @stockssell.limit(3).each do |deal| %>	
+	
 							<div class="row">
 								<div class="col-md-2">
-								<%= deal.created_at %>
+									deal.created_at
 								</div>
 
 								<div class="col-md-2">
-								<%= deal.type %>
+									deal.status
 								</div>
 
 								<div class="col-md-2">
-								<%= deal.price %> шт.
+									deal.price руб.
 								</div>
 
 								<div class="col-md-2">
-								<%= deal.amount %> руб.
+									deal.amount шт.
 								</div>
 
 								<div class="col-md-2">
-									<%= deal.price %>
+									deal.price
 								</div>
 
 							</div>
-						<% end %>
+
 
 
 					</div>

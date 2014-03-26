@@ -5,10 +5,10 @@
           </div>
           <div class='profile_name'>
             <div class="price">
-              <span class="amount"><%= Stock.where("host_id = ?", user.id).sum(:amount) %> осталось </span><br>
+              <span class="amount"><%= user.stock %> осталось </span><br>
               
 
-              <%= Stock.stockprice(user) %> руб. (<span class="green">+</span>)
+              <%= 100 %> руб. (<span class="green">+</span>)
             </div>
             <%= user.name %> 
           </div>

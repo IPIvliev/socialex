@@ -11,16 +11,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     @buyers = User.find(params[:id])
-    @users = User.all
-
-    @stockprice = Stock.stockprice(@user)
-
-    @stock = Stock.new
-
-    @stocksbuy = Stock.where("host_id = ? AND amount > ? AND status = ?", @user.id, 0, 2).lastbuy
-    @stockssell = Stock.where("host_id = ? AND amount > ? AND status = ?", @user.id, 0, 1).lastbuy
-
-    @stockamount = Stock.where("host_id = ?", @user.id)
 
   end
 

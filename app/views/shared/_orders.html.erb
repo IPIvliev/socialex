@@ -1,7 +1,7 @@
 <div class="row">
 			<div class="col-md-6 dashboard-panel-6 top-30 color">
 				<h4>Ордера на продажу</h4>
-				<p>Всего <%= @stocksbuy.count %> <%= Russian.pluralize(@stocksbuy.count, "предложение", "предложения", "предложений") %>. Отображены 3 предложения с наименьшей ценой </p>
+				<p>Всего <%= 100 %> <%= Russian.pluralize(100, "предложение", "предложения", "предложений") %>. Отображены 3 предложения с наименьшей ценой </p>
 				<div class="row">
 					<div class="col-md-4">
 						Цена
@@ -14,26 +14,26 @@
 					</div>
 				</div>
 
-				<% @stocksbuy.limit(3).each do |deal| %>	
+
 					<div class="row">
-						<div class="col-md-2">
+						<div class="col-md-4">
 						1
 						</div>
 
-						<div class="col-md-3">
-						<%= @user.name %>
+						<div class="col-md-4">
+						14
 						</div>
 
-						<div class="col-md-2">
-						<%= deal.amount %> шт.
+						<div class="col-md-4">
+						187 руб.
 						</div>
 					</div>
-				<% end %>
+	
 			</div>
 
 			<div class="col-md-6 dashboard-panel-6 pull-right top-30 color">
 				<h4>Ордера на покупку</h4>
-				<p>Всего <%= @stocksbuy.count %> <%= Russian.pluralize(@stocksbuy.count, "предложение", "предложения", "предложений") %>. Отображены 3 предложения с наименьшей ценой </p>
+				<p>Всего <%= 50 %> <%= Russian.pluralize(50, "предложение", "предложения", "предложений") %>. Отображены 3 предложения с наименьшей ценой </p>
 				<div class="row">
 					<div class="col-md-4">
 						Цена
@@ -46,20 +46,20 @@
 					</div>
 				</div>
 
-				<% @stocksbuy.limit(3).each do |deal| %>	
+
 					<div class="row">
-						<div class="col-md-2">
+						<div class="col-md-4">
 						1
 						</div>
 
-						<div class="col-md-3">
-						<%= @user.name %>
+						<div class="col-md-4">
+						12 шт.
 						</div>
 
-						<div class="col-md-2">
-						<%= deal.amount %> шт.
+						<div class="col-md-4">
+						21 руб.
 						</div>
 					</div>
-				<% end %>
+
 			</div>
 </div>
