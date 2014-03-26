@@ -4,7 +4,7 @@ class StocksController < ApplicationController
 
 
   def create
-    @stock = Stock.new(params[:stock])
+    @stock = current_user.build(params[:stock])
     if @stock.save
       flash[:success] = "Поздравляем Вас с успешной регистрацией. Теперь Вы можете подать заявку"
       redirect_to user_path(params[:stock][:buyer_id])

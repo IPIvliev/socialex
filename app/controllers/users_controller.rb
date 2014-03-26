@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    @buyers = User.find(params[:id])
-
+    @buy_orders = Order.where("host_id = ? AND status = ?", @user.id, 1).order("price ASC")
+    @sell_orders = Order.where("host_id = ? AND status = ?", @user.id, 2).order("price ASC")
   end
 
   def self.search

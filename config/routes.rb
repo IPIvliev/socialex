@@ -2,13 +2,10 @@ Socialex::Application.routes.draw do
 
 # Статические страницы
   get "static_pages/index"
-
   get "stocks.html", :to => "users#stocks"
 
   resources :users
-  resources :stocks do
-  	post :deal, :on => :member
-  end
+  resources :orders
 
 # Действия
 
