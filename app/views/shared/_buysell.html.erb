@@ -1,67 +1,79 @@
-<div class="row">
-	<div class="col-md-6 dashboard-panel-6 color top-30">
+<% if current_user %>
+	<div class="row">
+		<div class="col-md-6 dashboard-panel-6 color top-30">
 
-		<h4>Купить акции пользователя <%= @user.name %></h4>
+			<h4>Купить акции пользователя <%= @user.name %></h4>
 
-		<div class="row">
-			<%= form_for Order.new do |f| %>
-				<div class="form-group">
-					<div class="col-md-12">
-						<%= f.number_field :amount, :class => "form-control", :placeholder => "Количество акций" %>
-						<span class="help-block">Укажите количество акций, которые Вы хотите приобрести.</span>
+			<div class="row">
+				<%= form_for Order.new do |f| %>
+					<div class="form-group">
+						<div class="col-md-12">
+							<%= f.number_field :amount, :class => "form-control", :placeholder => "Количество акций" %>
+							<span class="help-block">Укажите количество акций, которые Вы хотите приобрести.</span>
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-md-12">
-						<%= f.text_field :price, :class => "form-control", :placeholder => "Стоимость за акцию" %>
-						<span class="help-block">Укажите предпочтительную стоимость покупки за одну акцию.</span>
+					<div class="form-group">
+						<div class="col-md-12">
+							<%= f.text_field :price, :class => "form-control", :placeholder => "Стоимость за акцию" %>
+							<span class="help-block">Укажите предпочтительную стоимость покупки за одну акцию.</span>
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-md-12">
-						<input class="form-control" id="disabledInput" type="text" placeholder="Общая стоимость" disabled>
+					<div class="form-group">
+						<div class="col-md-12">
+							<input class="form-control" id="disabledInput" type="text" placeholder="Общая стоимость" disabled>
+						</div>
 					</div>
-				</div>
-				<div class="col-md-12">
-					<br>
-					<button type="submit" class="btn btn-success">Подать заявку на покупку</button>
-				</div>
-				<%= f.hidden_field :host_id, :value => @user.id %>
-				<%= f.hidden_field :status, :value => 1 %>
-			<% end %>
+					<div class="col-md-12">
+						<br>
+						<button type="submit" class="btn btn-success">Подать заявку на покупку</button>
+					</div>
+					<%= f.hidden_field :host_id, :value => @user.id %>
+					<%= f.hidden_field :status, :value => 1 %>
+				<% end %>
+			</div>
+
+
 		</div>
 
+		<div class="col-md-6 dashboard-panel-6 pull-right color top-30">
+			<h4>Продать акции пользователя <%= @user.name %></h4>
+			<div class="row">
+				<%= form_for Order.new do |f| %>
+					<div class="form-group">
+						<div class="col-md-12">
+							<%= f.number_field :amount, :class => "form-control", :placeholder => "У вас 12 акция этого пользоватля" %>
+							<span class="help-block">Укажите количество акций, которые Вы хотите приобрести.</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-12">
+							<%= f.text_field :price, :class => "form-control", :placeholder => "Средняя стоимость акции составила 122 руб." %>
+							<span class="help-block">Укажите предпочтительную стоимость покупки за одну акцию.</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-12">
+							<input class="form-control" id="disabledInput" type="text" placeholder="Общая стоимость" disabled>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<br>
+						<button type="submit" class="btn btn-danger">Подать заявку на продажу</button>
+					</div>
+					<%= f.hidden_field :host_id, :value => @user.id %>
+					<%= f.hidden_field :status, :value => 2 %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+<% else %>
+
+	<div class="row">
+		<div class="col-md-12 dashboard-panel-12 top-30">
+			<p>Для того, чтобы торговать на бирже SocialExchange необходимо зарегистрироваться.</p>
+		</div>
 
 	</div>
 
-	<div class="col-md-6 dashboard-panel-6 pull-right color top-30">
-		<h4>Продать акции пользователя <%= @user.name %></h4>
-		<div class="row">
-			<%= form_for Order.new do |f| %>
-				<div class="form-group">
-					<div class="col-md-12">
-						<%= f.number_field :amount, :class => "form-control", :placeholder => "У вас 12 акция этого пользоватля" %>
-						<span class="help-block">Укажите количество акций, которые Вы хотите приобрести.</span>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-md-12">
-						<%= f.text_field :price, :class => "form-control", :placeholder => "Средняя стоимость акции составила 122 руб." %>
-						<span class="help-block">Укажите предпочтительную стоимость покупки за одну акцию.</span>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-md-12">
-						<input class="form-control" id="disabledInput" type="text" placeholder="Общая стоимость" disabled>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<br>
-					<button type="submit" class="btn btn-danger">Подать заявку на продажу</button>
-				</div>
-				<%= f.hidden_field :host_id, :value => @user.id %>
-				<%= f.hidden_field :status, :value => 2 %>
-			<% end %>
-		</div>
-	</div>
-</div>
+<% end %>

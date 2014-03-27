@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 class OrdersController < ApplicationController
+include OrdersHelper
 
 def new
 	@order = Order.new
@@ -9,6 +10,7 @@ end
 def create
 	@order = current_user.orders.build(params[:order])
 	if @order.save
+		trade(current_user.id, @order.host_id)
 	    flash[:success] = "Поздравляем Вас с успешной регистрацией. Теперь Вы можете подать заявку"
 	    redirect_to user_path(@order.host_id)
     else
