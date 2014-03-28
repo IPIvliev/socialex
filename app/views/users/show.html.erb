@@ -9,7 +9,7 @@
 					<strong> <%= @user.name %> </strong>
 					<p><strong>Акции в наличии:</strong> <%= @user.stock %> шт.</p>
 					<p><strong>Стоимость акции:</strong> <%= 100 %> руб.</p>
-					<p><strong>Динамика цены:</strong> +53%</p>
+					<p><strong>Динамика цены:</strong> <%= compare(@user) %> </p>
 				</div>
 				<div class="col-md-4 text-center">
 					<%= link_to (image_tag ("facebook.png")), "http://facebook.com/#{@user.uid}", :target => "_blank" %>

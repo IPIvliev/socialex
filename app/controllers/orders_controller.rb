@@ -24,7 +24,7 @@ def create
 				current_user.update_attribute(:pocket, current_user.pocket - price)
 
 				trade_order(current_user.id, @order.host_id)
-			    flash[:success] = "Вы упешно разместили заявку на покупку."
+			    flash[:success] = "Вы успешно разместили заявку на покупку."
 			    redirect_to :back
 		    else
 			    flash.now[:error] = 'Регистрация не удалась. Вы не заполнили, либо не правильно заполнили одно из полей.'
@@ -49,7 +49,7 @@ def create
 					 current_user.mystocks.where("host_id = ?", @order.host_id).first.amount - @order.amount)
 
 					trade_order(current_user.id, @order.host_id)
-				    flash[:success] = "Вы упешно разместили заявку на продажу."
+				    flash[:success] = "Вы успешно разместили заявку на продажу."
 				    redirect_to :back
 			    else
 				    flash.now[:error] = 'Регистрация не удалась. Вы не заполнили, либо не правильно заполнили одно из полей.'
