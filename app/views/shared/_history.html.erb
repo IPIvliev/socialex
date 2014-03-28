@@ -1,10 +1,11 @@
 <div class="row">
 			<div class="col-md-12 top-30 color">
 				<h4>История сделок</h4>
+
 				<div class="requests">
 
 					<div class="request">
-
+					<% if !@history.blank? %>
 						<div class="col-md-2">
 							Дата
 						</div>
@@ -25,8 +26,8 @@
 							Стоимость
 						</div>
 
-
-	
+					
+						<% @history.limit(20).each do |deal| %>
 							<div class="row">
 								<div class="col-md-2">
 									deal.created_at
@@ -49,8 +50,10 @@
 								</div>
 
 							</div>
-
-
+						<% end %>
+					<% else %>
+						<p>Пока по данному пользователю не прошло ни одной сделки.</p>
+					<% end %>
 
 					</div>
 				</div>

@@ -1,0 +1,16 @@
+<!--  Modal content for the above example -->
+  <div class="modal fade" id="LogIn" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myLargeModalLabel">Регистрация в сервисе Social Exchange</h4>
+        </div>
+        <div class="modal-body">
+          <p>В настоящее время проект Social Exchange работает исключительно с Facebook. Регистрация происходит через социальную сеть.</p>
+          <%= link_to "Facebook", "/auth/facebook", id: "sign_in", :class => "btn btn-primary btn-lg pull-center" %>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->

@@ -11,12 +11,14 @@
 					<p><strong>Стоимость акции:</strong> <%= 100 %> руб.</p>
 					<p><strong>Динамика цены:</strong> +53%</p>
 				</div>
-				<div class="col-md-4">
-					<%= image_tag ("facebook.png") %><%= image_tag ("twitter.png") %>
-					<p>У вас <strong>12 акций</strong> этого пользователя.</p>
+				<div class="col-md-4 text-center">
+					<%= link_to (image_tag ("facebook.png")), "http://facebook.com/#{@user.uid}", :target => "_blank" %>
+					<p class="top-30">У вас <strong>12 акций</strong> этого пользователя.</p>
 				</div>
 			</div>
-			
+
+			<%= render "/shared/notice" %>
+
 			<%= render "/shared/buysell" %>
 			
 			<%= render "/shared/orders" %>
@@ -24,8 +26,14 @@
 			<%= render "/shared/history" %>
 
 			<div class="col-md-12 top-30">
+				<% if !@owners.blank? %>
 				<strong>Держатели акций:</strong>
-				<p><i class="glyphicon glyphicon-user"></i> Иванов, <i class="glyphicon glyphicon-user"></i> Петров, <i class="glyphicon glyphicon-user"></i> Сидоров</p>
+					<p>
+						<% @owners.each do |owner| %>
+							<i class="glyphicon glyphicon-user"></i> <%= owner.user.name %>
+						<% end %>
+					</p>
+				<% end %>
 			</div>
 		</div>
 

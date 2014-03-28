@@ -1,7 +1,7 @@
 <div class="row">
 			<div class="col-md-6 dashboard-panel-6 top-30 color">
 				<h4>Ордера на продажу</h4>
-				<p>Всего <%= @sell_orders.count %> <%= Russian.pluralize(@sell_orders.count, "предложение", "предложения", "предложений") %>. Отображены 3 предложения с наименьшей ценой </p>
+				<p>Всего <%= @sell_orders.count %> <%= Russian.pluralize(@sell_orders.count, "предложение", "предложения", "предложений") %>. Отображены 10 предложений с наименьшей ценой </p>
 				<div class="row">
 					<div class="col-md-4">
 						Цена
@@ -15,10 +15,10 @@
 				</div>
 
 			<% if @sell_orders %>
-				<% @sell_orders.each do |sell_order| %>
+				<% @sell_orders.limit(10).each do |sell_order| %>
 					<div class="row">
 						<div class="col-md-4">
-							<%= sell_order.price %>
+							<%= sell_order.price.round(2) %>
 						</div>
 
 						<div class="col-md-4">
@@ -26,7 +26,7 @@
 						</div>
 
 						<div class="col-md-4">
-							<%= sell_order.amount * sell_order.price %>
+							<%= (sell_order.amount * sell_order.price).round(2) %>
 						</div>
 					</div>
 				<% end %>
@@ -36,7 +36,7 @@
 
 			<div class="col-md-6 dashboard-panel-6 pull-right top-30 color">
 				<h4>Ордера на покупку</h4>
-				<p>Всего <%= @buy_orders.count %> <%= Russian.pluralize(@buy_orders.count, "предложение", "предложения", "предложений") %>. Отображены 3 предложения с наименьшей ценой </p>
+				<p>Всего <%= @buy_orders.count %> <%= Russian.pluralize(@buy_orders.count, "предложение", "предложения", "предложений") %>. Отображены 10 предложений с наименьшей ценой </p>
 				<div class="row">
 					<div class="col-md-4">
 						Цена
@@ -51,10 +51,10 @@
 
 
 			<% if @buy_orders %>
-				<% @buy_orders.each do |buy_order| %>
+				<% @buy_orders.limit(10).each do |buy_order| %>
 					<div class="row">
 						<div class="col-md-4">
-							<%= buy_order.price %>
+							<%= buy_order.price.round(2) %>
 						</div>
 
 						<div class="col-md-4">
@@ -62,7 +62,7 @@
 						</div>
 
 						<div class="col-md-4">
-							<%= buy_order.amount * buy_order.price %>
+							<%= (buy_order.amount * buy_order.price).round(2) %>
 						</div>
 					</div>
 				<% end %>

@@ -2,7 +2,8 @@
 
 module OrdersHelper
 
-	def trade(current_user, host_id)
+	def trade_order(current_user, host_id)
+		
 		flash[:success] = "Поздравляемdff"
 	end
 

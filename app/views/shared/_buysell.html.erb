@@ -69,11 +69,11 @@
 
 <% else %>
 
-	<div class="row">
-		<div class="col-md-12 dashboard-panel-12 top-30">
-			<p>Для того, чтобы торговать на бирже SocialExchange необходимо зарегистрироваться.</p>
+
+		<div class="col-md-12 top-30">
+			<p class="bg-success">Для того, чтобы торговать на бирже SocialExchange необходимо <%= link_to "зарегистрироваться", "#", :data => {:toggle => "modal", :target => "#LogIn"} %>.</p>
 		</div>
 
-	</div>
+
 
 <% end %>

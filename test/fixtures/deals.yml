@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  uder_id: 1
+  host_id: 1
+  seconduser_id: 1
+  price: 9.99
+  status: 1
+  amount: 1
+
+two:
+  uder_id: 1
+  host_id: 1
+  seconduser_id: 1
+  price: 9.99
+  status: 1
+  amount: 1

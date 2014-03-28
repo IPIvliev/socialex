@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   # has_many :hosted, :foreign_key => 'host_id', :class_name => "Stock"
 
   has_many :orders
-
+  has_many :mystocks
 
 # Аутентификация, либо создание нового пользователя
 def self.from_omniauth(auth)
@@ -21,15 +21,5 @@ def self.from_omniauth(auth)
     user.save!
   end
 end
-
-
-# Сколько у пользователя денег
-  def money?
-    if pocket.blank?
-      return "0,00 руб."
-    else
-      number_to_currency( pocket, unit: "руб.", separator: ",", delimiter: "", format: "%n %u")
-    end
-  end
 
 end

@@ -12,6 +12,13 @@ class UsersController < ApplicationController
 
     @buy_orders = Order.where("host_id = ? AND status = ?", @user.id, 1).order("price ASC")
     @sell_orders = Order.where("host_id = ? AND status = ?", @user.id, 2).order("price ASC")
+
+    # История сделок с акциями просматриваемого пользователя
+    @history = Deal.where("host_id = ?", @user)
+
+    # Держатели акций просматриваемого пользователя
+    @owners = Mystock.where("host_id = ?", @user)
+
   end
 
   def self.search

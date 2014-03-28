@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140326090027) do
+ActiveRecord::Schema.define(:version => 20140328092442) do
+
+  create_table "deals", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "host_id"
+    t.integer  "seconduser_id"
+    t.decimal  "price",         :precision => 2, :scale => 2
+    t.integer  "status"
+    t.integer  "amount"
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+  end
+
+  create_table "mystocks", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "host_id"
+    t.decimal  "price",      :precision => 2, :scale => 2
+    t.integer  "amount"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+  end
 
   create_table "orders", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -29,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20140326090027) do
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.decimal  "pocket",           :precision => 2, :scale => 2
+    t.decimal  "pocket",           :precision => 2, :scale => 2, :default => 0.0
     t.integer  "stock",                                          :default => 100
     t.datetime "created_at",                                                      :null => false
     t.datetime "updated_at",                                                      :null => false
