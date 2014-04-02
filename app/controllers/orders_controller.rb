@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class OrdersController < ApplicationController
-include OrdersHelper
+	include OrdersHelper
 
 def new
 	@order = Order.new
@@ -18,13 +18,20 @@ def create
 		# Проверям, хватает ли средств у покупателя
 		if current_user.pocket >= price
 
+
+
 			if @order.save
 
 				#  Вычитаем стоимость акций из бюджета пользователя
 				current_user.update_attribute(:pocket, current_user.pocket - price)
 
-				trade_order(current_user.id, @order.host_id)
-			    flash[:success] = "Вы успешно разместили заявку на покупку."
+				# Проверяем наличие ордеров на продажу, соответствующих заявке
+				if Order.where("host_id = ? AND status = ? AND price <= ?", @order.host_id, 2, @order.price)
+					compare_orders(@order, 2)
+				end
+
+				
+			    flash[:success] = "Вы успешно разместили заявку на покупку #{@order.amount}."
 			    redirect_to :back
 		    else
 			    flash.now[:error] = 'Регистрация не удалась. Вы не заполнили, либо не правильно заполнили одно из полей.'
@@ -39,8 +46,9 @@ def create
 
 	# Если ордер размещён на продажу
 	elsif @order.status == 2
-		# Проверяем, есть ли акции у продавца
+		# Есть ли у продавца акции данного пользователя
 		if current_user.mystocks.where("host_id = ?", @order.host_id).first
+			# Проверяем, есть ли акции у продавца
 			if current_user.mystocks.where("host_id = ?", @order.host_id).first.amount >= @order.amount
 				if @order.save
 
@@ -48,7 +56,12 @@ def create
 					current_user.mystocks.where("host_id = ?", @order.host_id).first.update_attribute(:amount,
 					 current_user.mystocks.where("host_id = ?", @order.host_id).first.amount - @order.amount)
 
-					trade_order(current_user.id, @order.host_id)
+					# Проверяем наличие ордеров на покупку, соответствующих заявке
+					if Order.where("host_id = ? AND status = ? AND price <= ?", @order.host_id, 1, @order.price)
+						compare_orders(@order, 1)
+					end					
+					
+					
 				    flash[:success] = "Вы успешно разместили заявку на продажу."
 				    redirect_to :back
 			    else
@@ -60,6 +73,7 @@ def create
 				flash[:danger] = "У Вас недостаточно акций данного пользователя для совершения сделки."
 				redirect_to :back
 			end
+		# Если пользователь и продавец - одно лицо
 		elsif current_user.id == @order.host_id && current_user.stock >= @order.amount
 			if @order.save
 

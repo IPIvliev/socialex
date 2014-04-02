@@ -8,7 +8,7 @@
               <span class="amount"><%= user.stock %> осталось </span><br>
               
 
-              <%= Order.where(:host_id => user.id).order("price ASC").first.price.round(2) %> руб. (<%= compare(user) %>)
+              <%= Order.where(:host_id => user.id).order("price ASC").first.price.round(2) if Order.where(:host_id => user.id).order("price ASC").first %> руб. ()
             </div>
             <%= user.name %> 
           </div>

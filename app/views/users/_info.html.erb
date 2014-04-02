@@ -4,6 +4,6 @@
       <p><a href="#">Пополнить счёт</a></p>
       <p><a href="#">Вывести средства</a></p>
       <p><a href="/stocks.html">Все акции</a></p>
-      <p><strong>Средств на счёте:</strong> <%= money(current_user) %></p>
+      <p><strong>Средств на счёте:</strong> <%= money(current_user.pocket) %></p>
       <hr>
 <% end %>

@@ -7,13 +7,17 @@
 				</div>
 				<div class="col-md-4">
 					<strong> <%= @user.name %> </strong>
-					<p><strong>Акции в наличии:</strong> <%= @user.stock %> шт.</p>
 					<p><strong>Стоимость акции:</strong> <%= 100 %> руб.</p>
-					<p><strong>Динамика цены:</strong> <%= compare(@user) %> </p>
+					<p><strong>Динамика цены:</strong> <%= compare(@user) if !@user.orders.first.blank? && !@user.orders.second.blank? %> </p>
 				</div>
 				<div class="col-md-4 text-center">
 					<%= link_to (image_tag ("facebook.png")), "http://facebook.com/#{@user.uid}", :target => "_blank" %>
-					<p class="top-30">У вас <strong>12 акций</strong> этого пользователя.</p>
+					<% if current_user %>
+						<p class="top-30">У вас <strong>
+							<%= current_user.mystocks.where("host_id = ?", @user.id).first.amount if !current_user.mystocks.where("host_id = ?", @user.id).blank? %>
+							 акций</strong> этого пользователя.
+						</p>
+					<% end %>
 				</div>
 			</div>
 

@@ -30,23 +30,23 @@
 						<% @history.limit(20).each do |deal| %>
 							<div class="row">
 								<div class="col-md-2">
-									deal.created_at
+									<%= deal.created_at %>
 								</div>
 
 								<div class="col-md-2">
-									deal.status
+									<%= deal.status %>
 								</div>
 
 								<div class="col-md-2">
-									deal.price руб.
+									<%= deal.price %> руб. 
 								</div>
 
 								<div class="col-md-2">
-									deal.amount шт.
+									<%= deal.amount %> шт.
 								</div>
 
 								<div class="col-md-2">
-									deal.price
+									<%= deal.price %>
 								</div>
 
 							</div>
