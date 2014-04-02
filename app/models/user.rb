@@ -22,7 +22,7 @@ def self.from_omniauth(auth)
     user.oauth_expires_at = Time.at(auth.credentials.expires_at)
     user.save!
 
-    # Проверяем, создан уже этот пользоваитель. Если нет, то создаём ордер на продажу его акций
+    # Проверяем, создан ли этот пользоваитель. Если нет, то создаём ордер на продажу его акций
     if User.find_by_uid(user.uid).nil?
       @order = user.orders.build(:host_id => user.id, :amount => 100, :price => 100.00, :status => 2)
       @order.save

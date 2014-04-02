@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(:version => 20140328092442) do
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.decimal  "pocket",           :precision => 2, :scale => 2, :default => 0.0
-    t.integer  "stock",                                          :default => 100
     t.datetime "created_at",                                                      :null => false
     t.datetime "updated_at",                                                      :null => false
   end

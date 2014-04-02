@@ -5,7 +5,7 @@
           </div>
           <div class='profile_name'>
             <div class="price">
-              <span class="amount"><%= user.stock %> осталось </span><br>
+              <span class="amount"><%=  %> осталось </span><br>
               
 
               <%= Order.where(:host_id => user.id).order("price ASC").first.price.round(2) if Order.where(:host_id => user.id).order("price ASC").first %> руб. ()

@@ -73,18 +73,6 @@ def create
 				flash[:danger] = "У Вас недостаточно акций данного пользователя для совершения сделки."
 				redirect_to :back
 			end
-		# Если пользователь и продавец - одно лицо
-		elsif current_user.id == @order.host_id && current_user.stock >= @order.amount
-			if @order.save
-
-				current_user.update_attribute(:stock, current_user.stock - @order.amount)
-				flash[:success] = "Вы успешно разместили ордер на продажу своих акций."
-				redirect_to :back				
-			else
-
-			end
-
-
 
 		else
 			flash[:danger] = "У Вас нет акций данного пользователя. Сделка невозможна."
