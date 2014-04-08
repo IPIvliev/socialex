@@ -15,7 +15,7 @@
 					<% if current_user %>
 						<p class="top-30">У вас <strong>
 							<%= current_user.mystocks.where("host_id = ?", @user.id).first.amount if !current_user.mystocks.where("host_id = ?", @user.id).blank? %>
-							 акций</strong> этого пользователя.
+							<%= stocks_amount(current_user.mystocks.where("host_id = ?", @user.id).first.amount) if !current_user.mystocks.where("host_id = ?", @user.id).blank? %></strong> этого пользователя.
 						</p>
 					<% end %>
 				</div>
@@ -34,7 +34,7 @@
 				<strong>Держатели акций:</strong>
 					<p>
 						<% @owners.each do |owner| %>
-							<i class="glyphicon glyphicon-user"></i> <%= owner.user.name %>
+							<i class="glyphicon glyphicon-user"></i> <%= link_to owner.user.name, owner.user %>
 						<% end %>
 					</p>
 				<% end %>

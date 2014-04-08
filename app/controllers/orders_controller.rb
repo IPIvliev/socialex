@@ -25,7 +25,7 @@ def create
 				#  Вычитаем стоимость акций из бюджета пользователя
 				current_user.update_attribute(:pocket, current_user.pocket - price)
 
-				# Проверяем наличие ордеров на продажу, соответствующих заявке
+				# Проверяем наличие ордеров на продажу, соответствующих заявке и вносим изменения в БД
 				if Order.where("host_id = ? AND status = ? AND price <= ?", @order.host_id, 2, @order.price)
 					compare_orders(@order, 2)
 				end
@@ -52,12 +52,12 @@ def create
 			if current_user.mystocks.where("host_id = ?", @order.host_id).first.amount >= @order.amount
 				if @order.save
 
-					#  Вычитаем стоимость акций из бюджета пользователя
+					#  Вычитаем акции из имеющихся у пользователя
 					current_user.mystocks.where("host_id = ?", @order.host_id).first.update_attribute(:amount,
 					 current_user.mystocks.where("host_id = ?", @order.host_id).first.amount - @order.amount)
 
 					# Проверяем наличие ордеров на покупку, соответствующих заявке
-					if Order.where("host_id = ? AND status = ? AND price <= ?", @order.host_id, 1, @order.price)
+					if Order.where("host_id = ? AND status = ? AND price >= ?", @order.host_id, 1, @order.price)
 						compare_orders(@order, 1)
 					end					
 					

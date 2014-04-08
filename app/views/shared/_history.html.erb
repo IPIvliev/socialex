@@ -6,8 +6,8 @@
 
 					<div class="request">
 					<% if !@history.blank? %>
-						<div class="col-md-2">
-							Дата
+						<div class="col-md-4">
+							
 						</div>
 
 						<div class="col-md-2">
@@ -22,15 +22,15 @@
 							Количество
 						</div>
 
-						<div class="col-md-4">
+						<div class="col-md-2">
 							Стоимость
 						</div>
 
 					
-						<% @history.limit(20).each do |deal| %>
+						<% @history.limit(7).order("created_at DESC").each do |deal| %>
 							<div class="row">
-								<div class="col-md-2">
-									<%= deal.created_at %>
+								<div class="col-md-4">
+									<%= time_ago_in_words(deal.created_at) %> назад
 								</div>
 
 								<div class="col-md-2">
@@ -46,7 +46,7 @@
 								</div>
 
 								<div class="col-md-2">
-									<%= deal.price %>
+									<%= deal.price * deal.amount %> руб.
 								</div>
 
 							</div>

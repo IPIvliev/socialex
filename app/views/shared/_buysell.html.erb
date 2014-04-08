@@ -41,7 +41,7 @@
 				<%= form_for Order.new do |f| %>
 					<div class="form-group">
 						<div class="col-md-12">
-							<%= f.number_field :amount, :class => "form-control", :placeholder => "У вас #{current_user.mystocks.where("host_id = ?", @user.id).first.amount if !current_user.mystocks.where("host_id = ?", @user.id).blank?} акция этого пользоватля", :required => "required" %>
+							<%= f.number_field :amount, :class => "form-control", :placeholder => "У вас #{current_user.mystocks.where("host_id = ?", @user.id).first.amount if !current_user.mystocks.where("host_id = ?", @user.id).blank?} #{stocks_amount(current_user.mystocks.where("host_id = ?", @user.id).first.amount) if !current_user.mystocks.where("host_id = ?", @user.id).blank?} этого пользоватля", :required => "required" %>
 							<span class="help-block">Укажите количество акций, которые Вы хотите приобрести.</span>
 						</div>
 					</div>
