@@ -12,7 +12,7 @@ gem 'omniauth-facebook'
 
 # Facebook API
 
-gem 'install fb_graph'
+gem 'fb_graph', '~> 2.7.12'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

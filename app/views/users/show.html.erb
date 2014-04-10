@@ -7,7 +7,7 @@
 				</div>
 				<div class="col-md-4">
 					<strong> <%= @user.name %> </strong>
-					<p><strong>Стоимость акции:</strong> <%= Deal.where(:host_id => @user.id).last.price.round(2) if Deal.where(:host_id => @user.id).last %>  руб.</p>
+					<p><strong>Стоимость акции:</strong> <%= Deal.where(:host_id => @user.id).last.price.round(2) if Deal.where(:host_id => @user.id).last %> руб.</p>
 					<p><strong>Динамика цены:</strong> <%= compare(@user) if !@user.orders.first.blank? && !@user.orders.second.blank? %> </p>
 				</div>
 				<div class="col-md-4 text-center">

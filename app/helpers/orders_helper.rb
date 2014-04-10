@@ -4,16 +4,20 @@ module OrdersHelper
 
 	def change_mystock(deal)
 		# Если у покупателя пока нет ни одной акции эмитента акций
-		if !current_user.mystocks.where(:host_id == deal.host_id).first
+		if !current_user.mystocks.where(:host_id => deal.host_id).first
 			Mystock.create(:user_id => deal.user_id, :host_id => deal.host_id, :price => deal.price, :amount => deal.amount)
 		# Если у пользователя уже есть акции этого эмитента
 		else
-			stock = current_user.mystocks.where(:host_id == deal.host_id).first
+			stock = current_user.mystocks.where(:host_id => deal.host_id).first
 
 			# Вычисляем среднюю стоимость акции данного эмитента (среди акций, принадлежащих этому пользователю)
-			average_price = (stock.amount + deal.amount) / (stock.price + deal.price)
+			one = stock.price * stock.amount + deal.price * deal.amount
+			two = stock.amount + deal.amount
 
-			stock.update_attributes(:amount => stock.amount + deal.amount, :price => average_price.round(2))
+
+			average_price = one / two
+
+			stock.update_attributes(:amount => stock.amount + deal.amount, :price => average_price)
 		end
 	end
 

@@ -1,6 +1,6 @@
 <% if current_user %>
       <div class="headline"><h3><%= current_user.name %></h3></div>
-      <%= image_tag 'https://graph.facebook.com/'+current_user.uid+'/picture?type=normal&width=86&height=86', :class => "img-thumbnail" %>
+      <%= link_to (image_tag 'https://graph.facebook.com/'+current_user.uid+'/picture?type=normal&width=86&height=86', :class => "img-thumbnail"), user_path(current_user) %>
       <p><a href="#">Пополнить счёт</a></p>
       <p><a href="#">Вывести средства</a></p>
       <p><a href="/stocks.html">Все акции</a></p>
