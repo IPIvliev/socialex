@@ -27,7 +27,7 @@ def create
 
 				# Проверяем наличие ордеров на продажу, соответствующих заявке и вносим изменения в БД
 				if Order.where("host_id = ? AND status = ? AND price <= ?", @order.host_id, 2, @order.price)
-					compare_orders(@order, 2)
+					compare_orders_for_buy(@order)
 				end
 
 				
@@ -58,7 +58,7 @@ def create
 
 					# Проверяем наличие ордеров на покупку, соответствующих заявке
 					if Order.where("host_id = ? AND status = ? AND price >= ?", @order.host_id, 1, @order.price)
-						compare_orders(@order, 1)
+						compare_orders_for_sell(@order)
 					end					
 					
 					

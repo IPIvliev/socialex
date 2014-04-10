@@ -9,7 +9,7 @@
 
 			<%= form_for User.new, :url => {:controller => 'users', :action => 'search'}, :html => { :class => "form-inline" } do |f| %>
 			<div class="form-group">
-				<%= f.text_field :name, :class => "form-control", :placeholder => "@Ivanov" %>
+				<%= f.text_field :uid, :class => "form-control", :placeholder => "@Ivanov" %>
 			</div>
 			<%= f.submit "Перейти", :class => "btn btn-success" %>
 			<% end %>

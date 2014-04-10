@@ -9,17 +9,21 @@ module OrdersHelper
 		# Если у пользователя уже есть акции этого эмитента
 		else
 			stock = current_user.mystocks.where(:host_id == deal.host_id).first
-			stock.update_attributes(:amount => stock.amount + deal.amount, :price => deal.price)
+
+			# Вычисляем среднюю стоимость акции данного эмитента (среди акций, принадлежащих этому пользователю)
+			average_price = (stock.amount + deal.amount) / (stock.price + deal.price)
+
+			stock.update_attributes(:amount => stock.amount + deal.amount, :price => average_price.round(2))
 		end
 	end
 
-	def make_deal(second_user, host_id, status, amount, price)
+	def make_deal(old_order, new_order, amount)
 		@deal = current_user.deals.build(
-			:host_id => host_id,
-			:seconduser_id => second_user,
-			:status => status,
+			:host_id => new_order.host_id,
+			:seconduser_id => old_order.user_id,
+			:status => old_order.status,
 			:amount => amount,
-			:price => price
+			:price => new_order.price
 			)
 
 		@deal.save
@@ -28,48 +32,25 @@ module OrdersHelper
 		change_mystock(@deal)
 	end
 
-	def compare_orders(new_order, status)
-		for old_order in Order.where("host_id = ? AND status = ? AND price >= ?", new_order.host_id, status, new_order.price)
-  			unless new_order.frozen?
-
-			if old_order.amount > new_order.amount 
-				amount = old_order.amount - new_order.amount
-
-				# Создаём сделку
-				make_deal(old_order.user.id, new_order.host_id, status, new_order.amount, new_order.price)
-
-				old_order.update_attribute(:amount, amount)
-				new_order.update_attribute(:amount, 0)
-
-				new_order.destroy
-
-			elsif old_order.amount == new_order.amount 
-
-				# Создаём сделку
-				make_deal(old_order.user.id, new_order.host_id, status, new_order.amount, new_order.price)
-
-				old_order.update_attribute(:amount, 0)
-				new_order.update_attribute(:amount, 0)
-
-				old_order.destroy
-				new_order.destroy
-
-			elsif old_order.amount < new_order.amount
-				amount = new_order.amount - old_order.amount
-
-				# Создаём сделку
-				make_deal(old_order.user.id, new_order.host_id, status, amount, new_order.price)
-
-				old_order.update_attribute(:amount, 0)
-				new_order.update_attribute(:amount, amount)
-
-				old_order.destroy
-			end							
-		end
+	def compare_orders_for_buy(new_order)
+		for old_order in Order.where("host_id = ? AND status = ? AND price <= ?", new_order.host_id, 2, new_order.price).order("price ASC")
+  			unless new_order.frozen? 
+ 				# Высисляем и сохраняем остаток акций в орадерах на продажу и покупку
+  				sum_amounts_in_orders(old_order, new_order)
+			end
 		end
 	end
 
-	# Вычисляем динамику цен
+	def compare_orders_for_sell(new_order)
+		for old_order in Order.where("host_id = ? AND status = ? AND price >= ?", new_order.host_id, 1, new_order.price).order("price ASC")
+  			unless new_order.frozen?
+ 				# Высисляем и сохраняем остаток акций в орадерах на продажу и покупку
+  				sum_amounts_in_orders(old_order, new_order)
+			end
+		end
+	end
+
+	# Вычисляем динамику цен --- НУЖНО ИЗМЕНИТЬ
   	def compare(user)
 	  	compare = Order.where(:host_id => user.id).order("price ASC").first.price.round(2) / Order.where(:host_id => user.id).order("price ASC").second.price.round(2)
 
@@ -81,4 +62,41 @@ module OrdersHelper
   	
   	end
 
+  	# Высисляем и сохраняем остаток акций в орадерах на продажу и покупку
+  	def sum_amounts_in_orders(old_order, new_order)
+		if old_order.amount > new_order.amount 
+			amount = old_order.amount - new_order.amount
+
+			# Создаём сделку
+			make_deal(old_order, new_order, new_order.amount)
+
+			old_order.update_attribute(:amount, amount)
+			new_order.update_attribute(:amount, 0)
+
+			new_order.destroy
+
+		elsif old_order.amount == new_order.amount 
+
+			# Создаём сделку
+			make_deal(old_order, new_order, old_order.amount)
+
+			old_order.update_attribute(:amount, 0)
+			new_order.update_attribute(:amount, 0)
+
+			old_order.destroy
+			new_order.destroy
+
+		elsif old_order.amount < new_order.amount
+			amount = new_order.amount - old_order.amount
+
+			# Создаём сделку
+			make_deal(old_order, new_order, old_order.amount)
+
+			old_order.update_attribute(:amount, 0)
+			new_order.update_attribute(:amount, amount)
+
+			old_order.destroy
+
+		end	
+	end
 end

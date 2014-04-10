@@ -21,8 +21,18 @@ class UsersController < ApplicationController
 
   end
 
-  def self.search
-    redirect_to user_path(3)
+  def search
+    if !params[:user][:uid].blank?
+      @user = User.find_by_uid(params[:user][:uid])
+
+      if @user.nil?
+        User.create
+      else
+        redirect_to user_path(@user)
+      end
+    else
+      redirect_to root_path
+    end
   end
 
   def stocks
