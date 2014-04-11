@@ -5,7 +5,7 @@
 			<% current_user.mystocks.each do |stock| %>
 				<%= link_to User.find(stock.host_id).name, User.find(stock.host_id) %>
 				<%= stock.amount %>
-				<%= stock.price %>
+				<%= stock.price.round(2) %>
 				<hr>
 			<% end %>
 			<h3>Список ордеров на покупку акций</h3>

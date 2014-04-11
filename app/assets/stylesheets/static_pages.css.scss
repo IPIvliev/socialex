@@ -10,6 +10,15 @@ body {
 	line-height: 1.6;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 
+			.green {
+				color: #72C02C;
+			}
+			.red {
+				color: #960018;
+			}
+			.grey {
+				color: #777777;
+			}
 	.headline {
 		display: block;
 		margin: 10px 0 25px 0;
@@ -89,6 +98,7 @@ margin-top: 30px;
 		font-weight: bold;
 		
 		.price {
+			padding-top: 5px;
 			font-size: 0.7em;
 			.green {
 				color: #72C02C;

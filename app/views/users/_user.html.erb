@@ -5,10 +5,7 @@
           </div>
           <div class='profile_name'>
             <div class="price">
-              <span class="amount"><%=  %> осталось </span><br>
-              
-
-              <%= Deal.where(:host_id => user.id).last.price.round(2) if Deal.where(:host_id => user.id).last %> руб. ()
+              <%= stock_price(user.id) %> (<%= compare(user) %>)
             </div>
             <%= user.name %> 
           </div>

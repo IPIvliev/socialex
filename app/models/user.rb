@@ -1,12 +1,10 @@
 # encoding: utf-8
 
 class User < ActiveRecord::Base
-
+  
   attr_accessible :name, :oauth_expires_at, :oauth_token, :provider, :uid, :username
 
-  # has_many :selled, :foreign_key => 'seller_id', :class_name => "Stock"
-  # has_many :bought, :foreign_key => 'buyer_id', :class_name => "Stock"
-  # has_many :hosted, :foreign_key => 'host_id', :class_name => "Stock"
+  scope :have_stocks, where(:id => 21)
 
   has_many :orders, :dependent => :destroy
   has_many :deals, :dependent => :destroy

@@ -1,8 +1,13 @@
 # encoding: utf-8
 
 class StaticPagesController < ApplicationController
+
   def index
- 	@users = User.paginate(page: params[:page])
+ 	@users = User.all(:include => [:deals], :order => 'deals.id')
+
   end
 
+  def future
+    index! { @users = User.have_stocks }
+  end
 end
