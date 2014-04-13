@@ -7,7 +7,4 @@ class StaticPagesController < ApplicationController
 
   end
 
-  def future
-    index! { @users = User.have_stocks }
-  end
 end
