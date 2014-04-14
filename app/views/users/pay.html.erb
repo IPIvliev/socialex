@@ -11,7 +11,7 @@
   <strong>Сумма платёжа:</strong> <%= params[:amount] %> руб.</p>
 
     <%= payment_service_for current_user.id, "Socialex",
-                          :amount => 300,
+                          :amount => params[:amount],
                           :service => :robokassa,
                           :secret => "OdergiesSE1" do |s| %>
     <%= submit_tag "Внести взнос", :class => "btn btn-success" %>

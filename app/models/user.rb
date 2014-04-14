@@ -35,5 +35,6 @@ end
 
   def approve!
     update_attribute(:pocket, pocket + 12)
+    update_attribute(:name, @notification.outsum)
   end
 end
