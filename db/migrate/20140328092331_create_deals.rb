@@ -4,7 +4,7 @@ class CreateDeals < ActiveRecord::Migration
       t.integer :user_id
       t.integer :host_id
       t.integer :seconduser_id
-      t.decimal :price,           :precision => 7, :scale => 7
+      t.decimal :price,           :precision => 9, :scale => 2
       t.integer :status
       t.integer :amount
 
