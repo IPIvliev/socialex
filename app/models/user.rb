@@ -33,4 +33,7 @@ end
     Order.where(:host_id => user.id).first
   end
 
+  def approve!
+    update_attribute(:pocket, pocket + 12)
+  end
 end

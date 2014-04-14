@@ -4,11 +4,13 @@ Socialex::Application.routes.draw do
   get "static_pages/index"
   get "stocks.html", :to => "users#stocks"
 
+
   resources :users
   resources :orders
 
 # Действия
-
+  get "pay.html", :to => "users#pay"
+  
 # Поиск
 match 'users/search', to: 'users#search'
 

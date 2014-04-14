@@ -54,6 +54,8 @@ class UsersController < ApplicationController
 
   end
 
+  def pay
 
+  end
 
   end

@@ -18,10 +18,13 @@ gem 'fb_graph', '~> 2.7.12'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem 'mysql2'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'russian'
 gem 'thin'
+
+group :production do
+  gem 'mysql2'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
