@@ -22,6 +22,9 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'russian'
 gem 'thin'
 
+# Money
+gem 'activemerchant', :require => 'active_merchant'
+
 group :production do
   gem 'mysql2'
 end
