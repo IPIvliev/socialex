@@ -34,6 +34,6 @@ end
   end
 
   def approve(params)
-    update_attribute(:name, params)
+    update_attribute(:name, params.outsum)
   end
 end
