@@ -3,7 +3,7 @@ class CreateMystocks < ActiveRecord::Migration
     create_table :mystocks do |t|
       t.integer :user_id
       t.integer :host_id
-      t.decimal :price,           :precision => 2, :scale => 2
+      t.decimal :price,           :precision => 3, :scale => 7
       t.integer :amount
 
       t.timestamps

@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration
       t.integer :user_id,                :null => false
       t.integer :host_id,                :null => false
       t.integer :amount,                :null => false
-      t.decimal :price,                 :precision => 2, :scale => 2
+      t.decimal :price,                 :precision => 3, :scale => 7
       t.integer :status,                :null => false
 
       t.timestamps

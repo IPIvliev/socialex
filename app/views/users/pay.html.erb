@@ -2,12 +2,30 @@
 	<div class="row">
 		<div class="col-md-8">
 			<h3>Пополнить счёт</h3>
-    <%= payment_service_for 21, "Socialex",
+
+
+			<% if params[:amount] %>
+  <h3>Проверьте реквизиты платежа:</h3>
+  <strong>Ваш аккаунт:</strong> <%= current_user.name %></p>
+  <strong>Оператор платежа:</strong> Робокасса</p>
+  <strong>Сумма платёжа:</strong> <%= params[:amount] %> руб.</p>
+
+    <%= payment_service_for current_user.id, "Socialex",
                           :amount => 300,
                           :service => :robokassa,
                           :secret => "OdergiesSE1" do |s| %>
-    <%= submit_tag "Внести взнос", :class => "btn" %>
+    <%= submit_tag "Внести взнос", :class => "btn btn-success" %>
     <% end %>
+
+<% else %>
+
+  <form method="get">
+    <input name="amount" type="text" value="100">
+    <input type="submit">
+  </form>
+
+<% end %>
+
 		</div>
 		<%= render 'shared/column' %>
 	</div>
