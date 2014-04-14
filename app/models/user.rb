@@ -33,7 +33,7 @@ end
     Order.where(:host_id => user.id).first
   end
 
-  def approve(params)
-    update_attribute(:name, params.outsum)
+  def approve(amount)
+    update_attribute(:pocket, pocket + amount)
   end
 end

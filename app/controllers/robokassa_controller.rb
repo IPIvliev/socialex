@@ -22,7 +22,7 @@ class RobokassaController < ApplicationController
   # Robokassa redirect user to this action if it’s all ok !@user.approved? &&
   def success
     if  @notification.acknowledge
-      @user.approve(params[:outsum])
+      @user.approve(@notification.amount)
     end
 
     redirect_to @user, :notice => "Ваш взнос успешно принят!"
