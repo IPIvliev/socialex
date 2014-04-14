@@ -33,8 +33,7 @@ end
     Order.where(:host_id => user.id).first
   end
 
-  def approve!
-    update_attribute(:pocket, pocket + 12)
-    update_attribute(:name, @notification.outsum)
+  def approve(params)
+    update_attribute(:name, params)
   end
 end
