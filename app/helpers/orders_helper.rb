@@ -32,6 +32,9 @@ module OrdersHelper
 
 		@deal.save
 
+		# Меняем стоимость акций эммитента
+		User.find(@deal.host_id).update_attribute(:price, @deal.price)		
+
 		# Вносим изменения в имеющиеся у пользователя акции
 		change_mystock(@deal)
 	end

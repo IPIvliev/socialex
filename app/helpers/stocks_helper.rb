@@ -2,6 +2,7 @@
 
 module StocksHelper
 
+	# Вычисляем среднюю стоимость акции НЕ ИСПОЛЬЗУЕТСЯ
 	def stock_price(id)
 		if Deal.where(:host_id => id).last
 			price = Deal.where(:host_id => id).last.price.round(2)

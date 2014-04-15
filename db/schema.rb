@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20140328092442) do
     t.integer  "user_id"
     t.integer  "host_id"
     t.integer  "seconduser_id"
-    t.decimal  "price",         :precision => 2, :scale => 2
+    t.decimal  "price",         :precision => 9, :scale => 2
     t.integer  "status"
     t.integer  "amount"
     t.datetime "created_at",                                  :null => false
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20140328092442) do
   create_table "mystocks", :force => true do |t|
     t.integer  "user_id"
     t.integer  "host_id"
-    t.decimal  "price",      :precision => 2, :scale => 2
+    t.decimal  "price",      :precision => 9, :scale => 2
     t.integer  "amount"
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(:version => 20140328092442) do
     t.integer  "user_id",                                  :null => false
     t.integer  "host_id",                                  :null => false
     t.integer  "amount",                                   :null => false
-    t.decimal  "price",      :precision => 2, :scale => 2
+    t.decimal  "price",      :precision => 9, :scale => 2
     t.integer  "status",                                   :null => false
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
@@ -50,9 +50,10 @@ ActiveRecord::Schema.define(:version => 20140328092442) do
     t.string   "username"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.decimal  "pocket",           :precision => 2, :scale => 2, :default => 0.0
-    t.datetime "created_at",                                                      :null => false
-    t.datetime "updated_at",                                                      :null => false
+    t.decimal  "pocket",           :precision => 9, :scale => 2, :default => 0.0
+    t.decimal  "price",            :precision => 9, :scale => 2, :default => 100.0
+    t.datetime "created_at",                                                        :null => false
+    t.datetime "updated_at",                                                        :null => false
   end
 
 end

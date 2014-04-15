@@ -6,8 +6,8 @@
 			</div>
 			
 			<div class=".col-md-12 top-30 right">
-				<button class="btn btn-success btn-small">Все пользователи</button>
-				<%= link_to "Акции в наличии", root_path, :class => "btn btn-success btn-small" %>
+				<%= link_to "Все пользователи", root_path, :class => "btn btn-success btn-small" %>
+				<%= link_to "Акции в наличии", root_path(:search => current_user), :class => "btn btn-success btn-small" %>
 			</div>
 
 			<div class=".col-md-12 top-30">

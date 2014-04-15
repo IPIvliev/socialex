@@ -4,11 +4,11 @@ class User < ActiveRecord::Base
   
   attr_accessible :name, :oauth_expires_at, :oauth_token, :provider, :uid, :username
 
-  scope :have_stocks, where(:id => 21)
-
   has_many :orders, :dependent => :destroy
   has_many :deals, :dependent => :destroy
   has_many :mystocks, :dependent => :destroy
+
+  has_many :hosts, :through => :mystocks
 
 # Аутентификация, либо создание нового пользователя
 def self.from_omniauth(auth)
@@ -36,4 +36,12 @@ end
   def approve(amount)
     update_attribute(:pocket, pocket + amount)
   end
+
+  def self.search(search)  
+    if search  
+      find(search).hosts
+    else  
+      scoped  
+    end  
+  end 
 end
