@@ -11,7 +11,6 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 
 # Facebook API
-
 gem 'fb_graph', '~> 2.7.12'
 
 # Bundle edge Rails instead:
@@ -24,6 +23,10 @@ gem 'thin'
 
 # Money
 gem 'activemerchant', :require => 'active_merchant'
+
+# Graphics
+gem "chartkick"
+gem 'groupdate'
 
 group :production do
   gem 'mysql2'

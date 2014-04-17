@@ -13,15 +13,22 @@
 				<div class="col-md-4 text-center">
 					<%= link_to (image_tag ("facebook.png")), "http://facebook.com/#{@user.uid}", :target => "_blank" %>
 					<% if current_user %>
-						<p class="top-30">У вас <strong>
-							<%= current_user.mystocks.where("host_id = ?", @user.id).first.amount if !current_user.mystocks.where("host_id = ?", @user.id).blank? %>
-							<%= stocks_amount(current_user.mystocks.where("host_id = ?", @user.id).first.amount) if !current_user.mystocks.where("host_id = ?", @user.id).blank? %></strong> этого пользователя.
-						</p>
+					<p class="top-30">У вас <strong>
+						<%= current_user.mystocks.where("host_id = ?", @user.id).first.amount if !current_user.mystocks.where("host_id = ?", @user.id).blank? %>
+						<%= stocks_amount(current_user.mystocks.where("host_id = ?", @user.id).first.amount) if !current_user.mystocks.where("host_id = ?", @user.id).blank? %></strong> этого пользователя.
+					</p>
 					<% end %>
 				</div>
+
+
 			</div>
 
 			<%= render "/shared/notice" %>
+
+			<div class="col-md-12">
+				<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+				<%= area_chart Deal.where(:host_id => @user.id).group(:created_at).maximum(:price) %>
+			</div>
 
 			<%= render "/shared/buysell" %>
 			
@@ -29,14 +36,15 @@
 			
 			<%= render "/shared/history" %>
 
+
 			<div class="col-md-12 top-30">
 				<% if !@owners.blank? %>
 				<strong>Держатели акций:</strong>
-					<p>
-						<% @owners.each do |owner| %>
-							<i class="glyphicon glyphicon-user"></i> <%= link_to owner.user.name, owner.user %>
-						<% end %>
-					</p>
+				<p>
+					<% @owners.each do |owner| %>
+					<i class="glyphicon glyphicon-user"></i> <%= link_to owner.user.name, owner.user %>
+					<% end %>
+				</p>
 				<% end %>
 			</div>
 		</div>
