@@ -2,29 +2,31 @@
 	<div class="row">
 		<div class="col-md-8">
 			<div class=".col-md-12 color">
-				<% Deal.limit(15).order("created_at DESC").each do |deal| %>
+				<% if Deal.last %>
+					<% Deal.limit(15).order("created_at DESC").each do |deal| %>
 					<div class="row">
-								<div class="col-md-4">
-									<%= link_to User.find(deal.host_id).name, User.find(deal.host_id) %> назад
-								</div>
+						<div class="col-md-4">
+							<%= link_to User.find(deal.host_id).name, User.find(deal.host_id) %> назад
+						</div>
 
-								<div class="col-md-2">
-									<%= deal.status %>
-								</div>
+						<div class="col-md-2">
+							<%= deal.status %>
+						</div>
 
-								<div class="col-md-2">
-									<%= deal.price %> руб. 
-								</div>
+						<div class="col-md-2">
+							<%= deal.price %> руб. 
+						</div>
 
-								<div class="col-md-2">
-									<%= deal.amount %> шт.
-								</div>
+						<div class="col-md-2">
+							<%= deal.amount %> шт.
+						</div>
 
-								<div class="col-md-2">
-									<%= deal.price * deal.amount %> руб.
-								</div>
+						<div class="col-md-2">
+							<%= deal.price * deal.amount %> руб.
+						</div>
 
-							</div>
+					</div>
+					<% end %>
 				<% end %>
 			</div>
 			
