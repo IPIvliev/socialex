@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :orders, :dependent => :destroy
   has_many :deals, :dependent => :destroy
   has_many :mystocks, :dependent => :destroy
+  has_many :posts
 
   has_many :hosts, :through => :mystocks
 

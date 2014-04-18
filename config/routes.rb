@@ -1,5 +1,8 @@
 Socialex::Application.routes.draw do
 
+  resources :posts
+
+
 # Статические страницы
   get "static_pages/index"
   get "stocks.html", :to => "users#stocks"
