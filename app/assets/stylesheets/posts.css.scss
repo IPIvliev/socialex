@@ -1,3 +1,51 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$red: #960018;
+$yellow: #ffbf00;
+
+.blog {
+	h3 {
+	color: #72C02C;
+	}
+.blog-img {
+margin: 10px 0;
+			
+				overflow: hidden;
+				clear: left;
+				text-align: left;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				img {
+		
+					height: 250px;
+
+				}
+}
+.hero {
+padding: 18px;
+margin: 20px 0;
+color: #566C8A;
+font-size: 16px;
+background: #FCFCFC;
+border-left: 4px solid #72C02C;
+font-family: 'Open Sans', sans-serif;
+}
+ul {
+color: #555;
+font-size: 12px;
+&.blog-info {
+border-top: solid 1px #EEE;
+border-bottom: solid 1px #EEE;
+padding: 5px 0 5px 0;
+}
+}
+}
+
+.red {
+					color: $red;
+				}
+
+.yellow {
+	color: $yellow;
+}

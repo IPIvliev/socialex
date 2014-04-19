@@ -1,5 +1,7 @@
 Socialex::Application.routes.draw do
 
+  get "/admin/statistics.html", :to => "admin#statistics"
+
   resources :posts
 
 

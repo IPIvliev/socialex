@@ -1,5 +1,8 @@
 		<div class="col-md-4">
-			<%= render "/users/info" %>
+			<% if current_user %>
+				<%= render "/users/info" %>
+				<%= render "/users/admin" %>
+			<% end %>
 
 
 			<div class="headline"><h3>О проекте</h3></div>
@@ -14,6 +17,4 @@
 			<%= f.submit "Перейти", :class => "btn btn-success" %>
 			<% end %>
 
-			<div class="headline"><h3>Контакты</h3></div>
-			<p>E-mail: cccp1945@mail.ru</p>
 		</div>

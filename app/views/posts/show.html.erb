@@ -1,20 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <b>User:</b>
-  <%= @post.user_id %>
-</p>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="blog margin-bottom-30" itemscope itemtype="http://schema.org/NewsArticle">
+                <meta itemprop="genre" content="Новости компании">
+            	<h3 itemprop="headline"><%= @post.name %></h3>
+                <meta itemprop="author" content="Инфоком-НН">
+            	<ul class="unstyled inline blog-info">
+                	<li><i class="icon-calendar"></i> <%= Russian::strftime(@post.created_at, "%d %B %Y") %></li>
+                	<li><i class="icon-user"></i> <%= @post.user.name %></li>
+                    <% if current_user.role == 2 || current_user == @post.user %>
+                    <li><i class="icon-pencil"></i> <%= link_to "Изменить", edit_post_path(@post), :class => 'yellow' %> </li>
+                    <li><i class="icon-trash"></i> <%= link_to "Удалить", @post, method: :delete, :class => 'red',
+                                  data: { confirm: "Вы уверены?" } %></li>
+                    <% end %>
+                    <li><!-- Поместите этот тег туда, где должна отображаться кнопка +1. -->
+<div class="g-plusone" data-size="small" data-annotation="inline" data-width="300"></div>
 
-<p>
-  <b>Picture:</b>
-  <%= @post.picture %>
-</p>
+<!-- Поместите этот тег за последним тегом виджета кнопка +1. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ru'};
 
-<p>
-  <b>Text:</b>
-  <%= @post.text %>
-</p>
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+</li>
+                </ul>
+                    <div class="blog-img">
+                        <%= image_tag(@post.picture_url, :itemprop => "image") %>
+                    </div>
+                <span itemprop="text"><%= @post.text.html_safe %></span>
 
+            </div><!--/blog-->
+        </div>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+        <%= render 'shared/column' %>
+
+    </div>
+</div>
+

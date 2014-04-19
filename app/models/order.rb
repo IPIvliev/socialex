@@ -5,4 +5,5 @@ class Order < ActiveRecord::Base
   validates_numericality_of :price, :only_integer => true, :greater_than_or_equal_to => 0, :min => 1, :presence => true, :notice => "invalid fundays"
 
   belongs_to :user
+
 end

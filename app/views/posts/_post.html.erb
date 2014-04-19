@@ -1,0 +1,12 @@
+	                    <dl class="dl-horizontal">
+	                        <dt><%= image_tag (post.picture.thumb.url) if post.picture? %></dt>
+	                        <dd>
+	                            <%= link_to (truncate( raw( sanitize(post.text, :tags => %w(table tr td), :attributes => %w(id class style) ) ), :length => 130, :omission => "...")), post, :controller => :posts, :action => :show %>
+	                        </dd>
+	                        <dd>
+	                        	<%= link_to "Изменить", edit_post_path(post), :class => 'yellow' if current_user.role == 2 || current_user == post.user %> 
+	                        	<%= '|' if current_user.role == 2 || current_user == post.user %>
+	                            <%= link_to "Удалить", post, method: :delete, :class => "red", data: { confirm: "Вы уверены?" } if current_user.role == 2 || current_user == post.user %>
+	                            
+	                        </dd>
+	                    </dl>

@@ -1,0 +1,9 @@
+
+	                <div class="posts">
+	                    <div class="headline"><h3>Последние новости</h3></div>
+<%     @posts = Post.order("created_at DESC").limit(3) %>
+
+
+<%= render :partial => '/shared/footerpost',  :as => :post, :collection => @posts %>
+
+	                </div>

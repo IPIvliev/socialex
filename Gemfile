@@ -13,6 +13,11 @@ gem 'omniauth-facebook'
 # Facebook API
 gem 'fb_graph', '~> 2.7.12'
 
+# Blog
+gem 'ckeditor'
+gem 'carrierwave'
+gem 'rmagick', :require => 'RMagick'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

@@ -1,0 +1,5 @@
+<% if current_user.role == 2 %>
+      <p><%= link_to "Статистика", "/admin/statistics.html" %></p>
+      <p><%= link_to "Опубликовать новость", new_post_path %></p>
+      <hr>
+<% end %>

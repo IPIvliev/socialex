@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.datetime :oauth_expires_at
       t.decimal  :pocket,                 :precision => 9, :scale => 2, :default => 0.0
       t.decimal :price,           :precision => 9, :scale => 2, :default => 100.0
+      t.integer :role,            :default => 0
 
       t.timestamps
     end

@@ -1,0 +1,15 @@
+<div class="container top-30">
+	<div class="row">
+		<div class="col-md-8">
+			<div class=".col-md-12 color">
+				<strong>Активных пользователей:</strong> <%= User.all.count - User.where(:oauth_expires_at => nil).count %>
+				<br>
+				<strong>На всех счетах:</strong> <%= User.sum(:pocket) - User.find_by_role(2).pocket %>
+	
+			</div>
+			
+	
+		</div>
+		<%= render 'shared/column' %>
+	</div>
+</div>

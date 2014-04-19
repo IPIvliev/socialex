@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+    <%= f.label "Название"%><br />
+    <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :picture %><br />
-    <%= f.text_field :picture %>
+    <%= image_tag @post.picture.thumb.url %> <%= f.file_field :picture, :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :text %><br />
-    <%= f.text_field :text %>
+    <%= f.cktext_area :text %>
   </div>
   <div class="actions">
     <%= f.submit %>

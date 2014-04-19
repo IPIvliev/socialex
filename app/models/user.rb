@@ -44,5 +44,6 @@ end
     else  
       scoped  
     end  
-  end 
+  end
+
 end

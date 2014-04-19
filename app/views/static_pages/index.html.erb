@@ -3,36 +3,35 @@
 		<div class="col-md-8">
 			<div class=".col-md-12 color">
 
-					<% Deal.limit(15).order("created_at DESC").each do |deal| %>
-					<div class="row">
-						<div class="col-md-4">
-							<%= link_to User.find(deal.host_id).name, User.find(deal.host_id) %> назад
-						</div>
-
-						<div class="col-md-2">
-							<%= deal.status %>
-						</div>
-
-						<div class="col-md-2">
-							<%= deal.price %> руб. 
-						</div>
-
-						<div class="col-md-2">
-							<%= deal.amount %> шт.
-						</div>
-
-						<div class="col-md-2">
-							<%= deal.price * deal.amount %> руб.
-						</div>
-
+				<% Deal.limit(15).order("created_at DESC").each do |deal| %>
+				<div class="row">
+					<div class="col-md-4">
+						<%= link_to User.find(deal.host_id).name, User.find(deal.host_id) %>
 					</div>
-					<% end %>
 
+					<div class="col-md-2">
+						<%= deal.buy_sell %>
+					</div>
+
+					<div class="col-md-2">
+						<%= deal.price %> руб. 
+					</div>
+
+					<div class="col-md-2">
+						<%= deal.amount %> шт.
+					</div>
+
+					<div class="col-md-2">
+						<%= deal.price * deal.amount %> руб.
+					</div>
+
+				</div>
+				<% end %>
 			</div>
 			
 			<div class=".col-md-12 top-30 right">
 				<%= link_to "Все пользователи", root_path, :class => "btn btn-success btn-small" %>
-				<%= link_to "Акции в наличии", root_path(:search => current_user), :class => "btn btn-success btn-small" %>
+				<%= link_to "Акции в наличии", root_path(:search => current_user), :class => "btn btn-success btn-small" if current_user %>
 			</div>
 
 			<div class=".col-md-12 top-30">
