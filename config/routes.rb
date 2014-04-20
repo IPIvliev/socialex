@@ -34,6 +34,7 @@ match 'auth/failure', to: redirect('/')
 match 'signout', to: 'sessions#destroy', as: 'signout'
 
 # Корневая страница
+match '/:locale' => 'static_pages#index'
 root to: "static_pages#index"
 
 end
