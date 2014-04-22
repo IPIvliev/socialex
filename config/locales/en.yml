@@ -11,9 +11,9 @@ en:
   exit: "Exit"
   account: "Account"
 
-  user_count:
-    one: user
-    other: users
+#  user_count:
+ #   one: user
+ #   other: users
 
   # index
   all_users: "All users"
