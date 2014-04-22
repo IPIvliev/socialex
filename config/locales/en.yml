@@ -11,7 +11,7 @@ en:
   exit: "Exit"
   account: "Account"
 
-  user_count: 
+  user_count:
     one: user
     other: users
 
