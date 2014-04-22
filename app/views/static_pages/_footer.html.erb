@@ -4,10 +4,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
-					<div class="headline"><h3>О нас</h3></div>	
-					<p class="margin-bottom-25">Информация о проекте.</p>	
+					<div class="headline"><h3><%= I18n.t(:footer_about) %></h3></div>	
+					<p class="margin-bottom-25"><%= I18n.t(:footer_info) %></p>	
 
-										<div class="headline"><h3>Контакты</h3></div>	
+										<div class="headline"><h3><%= I18n.t(:footer_contacts) %></h3></div>	
 					<p class="margin-bottom-25">E-mail: infocom-nn@yandex.ru</p>	
 				</div><!--/span4-->	
 
@@ -24,7 +24,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8">						
-					<p>2013 &copy; ООО "Инфоком-НН". Все права защищены. <a href="/sitemap.html">Карта сайта</a> | <a href="#">Типовой договор</a></p>
+					<p>2014 &copy; <%= I18n.t(:footer_copy) %> <a href="/sitemap.html"><%= I18n.t(:footer_sitemap) %></a> | <a href="#"><%= I18n.t(:footer_agreement) %></a></p>
 				</div>
 				<div class="col-md-4">	
 					

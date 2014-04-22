@@ -1,3 +1,41 @@
 
 ru:
   hello_t: "Привет, Мир!"
+
+  # head
+  language: "Язык"
+  help: "Помощь"
+  header_text: "Мы работаем в тестовом режиме"
+  exit: "Выход"
+  account: "Аккаунт"
+
+  user_count: 
+    zero: участников
+    one: участник
+    few: участника
+    other: участников
+
+  # index
+  all_users: "Все пользователи"
+  my_stocks: "Акции в наличии"
+
+  # Right column
+  about: "О проекте"
+  buy_stock: "Найти пользователя"
+  go: "Перейти"
+  about_text: "Биржа социального капитала 'Social Exchange' работает в тестовом режиме."
+
+
+
+   # User show
+  stock_price: "Стоимость акции"
+  price_dinamics: "Динамика цен"
+
+  # Footer
+  footer_about: "О нас"
+  footer_info: "Информация о проекте."
+  footer_contacts: "Контакты"
+  footer_copy: "ООО 'Инфоком-НН'. Все права защищены."
+  footer_sitemap: "Карта сайта"
+  footer_agreement: "Соглашение"
+  footer_news: "Последние новости"

@@ -3,3 +3,41 @@
 
 en:
   hello_t: "Hello world"
+
+  # head
+  language: "Language"
+  help: "Help"
+  header_text: "We work in a test mode"
+  exit: "Exit"
+  account: "Account"
+
+  user_count: 
+    one: user
+    other: users
+    zero: users
+
+  # index
+  all_users: "All users"
+  my_stocks: "Shares of stock"
+
+  # Right column
+  about: "About the project"
+  buy_stock: "Find the user"
+  go: "Find"
+  about_text: "The project works in a test mode"
+
+
+
+
+  # User show
+  stock_price: "Price for one stock"
+  price_dinamics: "Price dinamics"
+
+  # Footer
+  footer_about: "About us"
+  footer_info: "Information about the project"
+  footer_contacts: "Contact"
+  footer_copy: "'INFOCOM-NN'. All Rights Reserved"
+  footer_sitemap: "Site map"
+  footer_agreement: "Agreement"
+  footer_news: "News"

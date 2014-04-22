@@ -1,17 +1,24 @@
 Socialex::Application.routes.draw do
 
+  filter :locale
+
   get "/admin/statistics.html", :to => "admin#statistics"
 
-  resources :posts
-
+  #scope "(:locale)", :locale => /ru|en/ do
+    resources :posts
+  #end
 
 # Статические страницы
   get "static_pages/index"
   get "stocks.html", :to => "users#stocks"
 
 
-  resources :users
-  resources :orders
+    resources :users
+
+
+  #scope "(:locale)", :locale => /ru|en/ do
+    resources :orders
+  #end
 
 # Действия
   get "pay.html", :to => "users#pay"
@@ -34,7 +41,8 @@ match 'auth/failure', to: redirect('/')
 match 'signout', to: 'sessions#destroy', as: 'signout'
 
 # Корневая страница
-match '/:locale' => 'static_pages#index'
+
+
 root to: "static_pages#index"
 
 end

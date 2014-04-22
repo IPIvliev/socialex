@@ -12,6 +12,7 @@ gem 'omniauth-facebook'
 
 # Facebook API
 gem 'fb_graph', '~> 2.7.12'
+gem 'routing-filter'
 
 # Blog
 gem 'ckeditor'

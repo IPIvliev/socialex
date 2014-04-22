@@ -4,16 +4,14 @@
 	    <div class="container">   
     
 	        <ul class="loginbar pull-right">
-	            <li><i class="icon-globe"></i><a>Язык <i class="icon-sort-up"></i></a>
+	            <li><i class="icon-globe"></i><a><%= I18n.t(:language) %> <i class="icon-sort-up"></i></a>
 	                <ul class="nav-list">
-	                    <li class="active"><a href="#">Русский</a> <i class="icon-ok"></i></li>
-	                    <li><a href="#">Spanish</a></li>
-	                    <li><a href="#">English</a></li>
-	                    <li><a href="#">German</a></li>
+	                    <li class="active"><a href="/ru/">Русский</a> <i class="icon-ok"></i></li>
+	                    <li><a href="/en/">English</a></li>
 	                </ul>
 	            </li>   
 	            <li class="devider">&nbsp;</li>
-	            <li><a href="/help.html" class="login-btn">Помощь</a></li>  
+	            <li><a href="/help.html" class="login-btn"><%= I18n.t(:help) %></a></li>  
 	           
 	        </ul>
 
@@ -25,24 +23,23 @@
 		<div class="row">
 			<div class="col-md-4">
 				<div class="logo">                                             
-					<a href="/">
-						<%= image_tag "/logo.png" %>
-					</a>
+					<%= link_to image_tag("/logo.png"), root_path %>
 				</div>   
 			</div>
 			<div class="col-md-4">
-				Мы работаем в тестовом режиме.
+				<%= I18n.t(:header_text) %>
 			</div>
 			<div class="col-md-2">
 				<% if current_user %>
-					<%= link_to "# Выход", signout_path, id: "sign_out", :class => "btn btn-success btn-lg pull-center" %>
+					<%= link_to "# #{I18n.t(:exit)}", signout_path, id: "sign_out", :class => "btn btn-success btn-lg pull-center" %>
 				<% else %>
-					<%= link_to "# Аккаунт", "#", :class => "btn btn-success btn-lg pull-center", :data => {:toggle => "modal", :target => "#LogIn"} %>
+					<%= link_to "# #{I18n.t(:account)}", "#", :class => "btn btn-success btn-lg pull-center", :data => {:toggle => "modal", :target => "#LogIn"} %>
 				<% end %>
 
 			</div>
 			<div class="col-md-2">
-				<span class="big green"> <%= User.all.count %> </span><br> <%= Russian.pluralize(User.all.count, "участник", "участника", "участников") %>
+				<span class="big green"> <%= User.all.count %> </span><br> <%= I18n.t('user_count', :count => User.all.count) %>
+
 			</div>
 		</div>
 	</div>

@@ -5,16 +5,16 @@
 			<% end %>
 
 
-			<div class="headline"><h3>О проекте</h3></div>
-			<p>Биржа социального капитала "Social Exchange" работает в тестовом режиме.</p>
+			<div class="headline"><h3><%= I18n.t(:about) %></h3></div>
+			<p><%= I18n.t(:about_text) %></p>
 
-			<div class="headline"><h3>Купить акции</h3></div>
+			<div class="headline"><h3><%= I18n.t(:buy_stock) %></h3></div>
 
 			<%= form_for User.new, :url => {:controller => 'users', :action => 'search'}, :html => { :class => "form-inline" } do |f| %>
 			<div class="form-group">
-				<%= f.text_field :uid, :class => "form-control", :placeholder => "@Ivanov" %>
+				<%= f.text_field :uid, :class => "form-control", :placeholder => "Ivanov" %>
 			</div>
-			<%= f.submit "Перейти", :class => "btn btn-success" %>
+			<%= f.submit "#{I18n.t(:go)}", :class => "btn btn-success" %>
 			<% end %>
 
 		</div>
