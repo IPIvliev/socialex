@@ -3,4 +3,4 @@
 	                        <dd>
 	                            <%= link_to (truncate( raw( sanitize(post.text, :tags => %w(table tr td), :attributes => %w(id class style) ) ), :length => 165, :omission => "...")), post, :controller => :posts, :action => :show %>
 	                        </dd>
-	                    </dl>
+	                    </dl><br>

@@ -10,6 +10,9 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+# Перевод моделей
+gem 'globalize', '~> 3.1.0'
+
 # Facebook API
 gem 'fb_graph', '~> 2.7.12'
 gem 'routing-filter'

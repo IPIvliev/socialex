@@ -68,12 +68,21 @@
 		color: white !important;
 		text-decoration: none !important;
 	}
-
+		.dl-horizontal:before, .dl-horizontal:after {
+margin-top: 10px;
+content: "";
+line-height: 0;
+}
 	.posts {
 		padding: 0 15px;
 
+		dl {
+			display: block;
+
+		}
+
 		.dl-horizontal {
-			margin-bottom: 0;
+			margin-bottom: 20px;
 			padding: 3px;
 			background: #FDFDFD;
 			border-right: solid 2px #EEE;
@@ -81,6 +90,7 @@
 			background: none !important;
 
 			dt {
+				display: block;
 				width: 56px;
 				float: left;
 				overflow: hidden;
@@ -99,7 +109,7 @@
 
 			dd {
 				margin-left: 66px;
-				
+				display: block;
 				p {
 					margin: 0;
 					color: #DADADA;

@@ -61,6 +61,9 @@ module Socialex
 
     # Gem Russian
     config.i18n.default_locale = :ru
+
+    # Translation
+    config.i18n.fallbacks = true
   
   end
 end
