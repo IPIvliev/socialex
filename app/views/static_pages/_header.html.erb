@@ -27,7 +27,7 @@
 				</div>   
 			</div>
 			<div class="col-md-4">
-				<%= I18n.t(:header_text) %>
+				<%= I18n.t(:header_text) if Settings.status == "test" %>
 			</div>
 			<div class="col-md-2">
 				<% if current_user %>

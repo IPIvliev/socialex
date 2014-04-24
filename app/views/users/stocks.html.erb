@@ -3,13 +3,27 @@
 		<div class="col-md-8">
 			<h3>Список акций, приобретённый Вами</h3>
 			<% current_user.mystocks.where("amount > ?", 0).each do |stock| %>
-				<%= link_to stock.host.name, stock.host %>
-				<%= stock.amount %>
-				<%= stock.price.round(2) %>
-				<hr>
+			<%= link_to stock.host.name, stock.host %>
+			<%= stock.amount %>
+			<%= stock.price.round(2) %>
+			<hr>
 			<% end %>
 			<h3>Список ордеров на покупку акций</h3>
+			<% current_user.orders.where(:status => 1).each do |order| %>
+<%= link_to order.order_host.name, order.order_host %>
+			<%= order.amount %>
+			<%= order.price.round(2) %>
+			<%= link_to "Удалить", order, method: :delete, data: { confirm: 'Вы уверены?' } %>
+			<hr>
+			<% end %>
 			<h3>Список ордеров на продажу акций</h3>
+			<% current_user.orders.where(:status => 2).each do |order| %>
+			<%= link_to order.order_host.name, order.order_host %>
+			<%= order.amount %>
+			<%= order.price.round(2) %>
+			<%= link_to "Удалить", order, method: :delete, data: { confirm: 'Вы уверены?' } %>
+			<hr>
+			<% end %>
 		</div>
 		<%= render 'shared/column' %>
 	</div>

@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :posts
 
   has_many :hosts, :through => :mystocks
+  has_many :order_hosts, :through => :orders
 
 # Аутентификация, либо создание нового пользователя
 def self.from_omniauth(auth)

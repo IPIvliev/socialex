@@ -14,7 +14,7 @@ def create
 	if @order.status == 1
 		# Вычисляем стоимость всех акций в заявке
 		price = @order.amount * @order.price
-
+		price = price * Settings.profit + price
 		# Проверям, хватает ли средств у покупателя
 		if current_user.pocket >= price
 
@@ -79,6 +79,16 @@ def create
 			redirect_to :back
 		end
 	end
+end
+
+def destroy
+	@order = Order.find(params[:id])
+	price = @order.price * @order.amount
+	price = price * Settings.profit + price
+	@order.user.update_attribute(:pocket, @order.user.pocket + price)
+    @order.destroy
+
+    redirect_to :back
 end
 
 end

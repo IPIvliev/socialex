@@ -37,6 +37,9 @@ module OrdersHelper
 
 		# Вносим изменения в имеющиеся у пользователя акции
 		change_mystock(@deal)
+
+		# Вносим изменения в кошелёк второго пользователя
+		User.find(@deal.seconduser_id).update_attribute(:pocket, User.find(@deal.seconduser_id).pocket + @deal.price * @deal.amount)
 	end
 
 	def compare_orders_for_buy(new_order)

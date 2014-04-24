@@ -30,6 +30,7 @@
 					<%= f.hidden_field :host_id, :value => @user.id %>
 					<%= f.hidden_field :status, :value => 1 %>
 				<% end %>
+				<p><span class="red">*</span> комиссия биржи составляет <%= (Settings.profit * 100).to_i %>% от суммы сделки</p>
 			</div>
 
 

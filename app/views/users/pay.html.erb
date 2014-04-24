@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-8">
 			<h3>Пополнить счёт</h3>
-
+<% if Settings.status != "test" %>
 
 			<% if params[:amount] %>
   <h3>Проверьте реквизиты платежа:</h3>
@@ -17,13 +17,18 @@
     <%= submit_tag "Внести взнос", :class => "btn btn-success" %>
     <% end %>
 
+  <% else %>
+
+    <form method="get">
+      <input name="amount" type="text" value="100">
+      <input type="submit">
+    </form>
+
+  <% end %>
+
 <% else %>
-
-  <form method="get">
-    <input name="amount" type="text" value="100">
-    <input type="submit">
-  </form>
-
+  <p>В настоящее время приложение работает в тестовом режиме. Пополнение счёта не возможно.</p>
+  <strong>Мы ищем спонсоров для развития проекта. Телефон для свяи: 8-903-602-89-19</strong>
 <% end %>
 
 		</div>

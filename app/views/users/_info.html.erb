@@ -1,7 +1,7 @@
       <div class="headline"><h3><%= current_user.name %></h3></div>
       <%= link_to (image_tag 'https://graph.facebook.com/'+current_user.uid+'/picture?type=normal&width=86&height=86', :class => "img-thumbnail"), user_url(:id => current_user) %>
-      <p><a href="/pay.html">Пополнить счёт</a></p>
-      <p><a href="#">Вывести средства</a></p>
+      <p><%= link_to "Пополнить счёт", "/pay.html" %></p>
+      <p><%= link_to "Вывести средства", "/pay.html" if Settings.status != "test" %></p>
       <p><a href="/stocks.html">Все акции</a></p>
       <p><strong>Средств на счёте:</strong> <%= money(current_user.pocket) %></p>
       <hr>

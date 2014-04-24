@@ -2,9 +2,11 @@
 	<div class="row">
 		<div class="col-md-8">
 			<div class=".col-md-12 color">
-				<strong>Активных пользователей:</strong> <%= User.all.count - User.where(:oauth_expires_at => nil).count %>
+				<strong>Активных пользователей:</strong> <%= User.where("oauth_expires_at IS NOT NULL").count %>
 				<br>
-				<strong>На всех счетах:</strong> <%= User.sum(:pocket) - User.find_by_role(2).pocket %>
+				<strong>На всех счетах (кроме админа):</strong> <%= money(User.sum(:pocket) - User.find_by_role(2).pocket) %>
+				<br>
+				<strong>На всех счетах (активных пользователей без админа):</strong> <%= money(User.where("oauth_expires_at IS NOT NULL").sum(:pocket) - User.find_by_role(2).pocket) %>
 	
 			</div>
 			
